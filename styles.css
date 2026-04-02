@@ -34,7 +34,7 @@
   pointer-events: none;
   user-select: none;
 
-  z-index: 0;
+  z-index: 1;
 }
 
 
@@ -131,4 +131,11 @@
       width: 100%;
     }
   }
+
+  @media (max-width: 600px) {
+  .watermark {
+    font-size: 40px;       /* más pequeña */
+    color: rgba(0, 0, 0, 0.08); /* un poco más visible */
+  }
+}
 </style>

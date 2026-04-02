@@ -1,4 +1,4 @@
- <style>
+<style>
   * {
     box-sizing: border-box;
   }
@@ -19,27 +19,22 @@
     padding-bottom: 5px;
   }
 
-  
   /* MARCA DE AGUA */
-
-.watermark {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(-30deg);
-
-  font-size: 10vw; /* tamaño dinámico según pantalla */
-  color: rgba(255, 0, 0, 0.3);
-
-  pointer-events: none;
-  user-select: none;
-
-  z-index: 1;
-}
-
+  .watermark {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-30deg);
+    font-size: 10vw;
+    color: rgba(0, 0, 0, 0.06);
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+    white-space: nowrap;
+  }
 
   /* CONTENEDOR */
-  body > * {
+  body > *:not(.watermark) {
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
@@ -130,12 +125,10 @@
     button {
       width: 100%;
     }
-  }
 
-  @media (max-width: 600px) {
-  .watermark {
-    font-size: 40px;       /* más pequeña */
-    color: rgba(0, 0, 0, 0.08); /* un poco más visible */
+    .watermark {
+      font-size: 40px;
+      color: rgba(0, 0, 0, 0.08);
+    }
   }
-}
 </style>

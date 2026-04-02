@@ -29,7 +29,7 @@
   transform: translate(-50%, -50%) rotate(-30deg);
 
   font-size: 10vw; /* tamaño dinámico según pantalla */
-  color: rgba(0, 0, 0, 0.05);
+  color: rgba(255, 0, 0, 0.3);
 
   pointer-events: none;
   user-select: none;

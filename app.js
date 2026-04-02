@@ -585,7 +585,28 @@ async function generarPDF() {
 
     const a = document.createElement("a");
     a.href = url;
-    a.download = "parte.pdf";
+
+
+    let nombreArchivo = "parte.pdf";
+
+     if (d.g.f) {
+  const fechaObj = new Date(d.g.f);
+
+  if (!isNaN(fechaObj)) {
+    const dia = String(fechaObj.getDate()).padStart(2, "0");
+    const mes = String(fechaObj.getMonth() + 1).padStart(2, "0");
+    const anio = String(fechaObj.getFullYear()).slice(-2);
+
+    nombreArchivo = `parte_${dia}-${mes}-${anio}.pdf`;
+  }
+}
+
+a.download = nombreArchivo;
+
+
+
+
+   
     document.body.appendChild(a);
     a.click();
     a.remove();

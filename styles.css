@@ -19,6 +19,25 @@
     padding-bottom: 5px;
   }
 
+  
+  /* MARCA DE AGUA */
+
+.watermark {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-30deg);
+
+  font-size: 120px;
+  color: rgba(0, 0, 0, 0.05);
+
+  pointer-events: none;
+  user-select: none;
+
+  z-index: 0;
+}
+
+
   /* CONTENEDOR */
   body > * {
     max-width: 1000px;

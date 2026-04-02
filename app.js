@@ -589,13 +589,13 @@ async function generarPDF() {
 
     let nombreArchivo = "parte.pdf";
 
-     if (d.g.f) {
-  const fechaObj = new Date(d.g.f);
+if (d.g.f && d.g.f.includes("-")) {
+  const partes = d.g.f.split("-"); // yyyy-mm-dd
 
-  if (!isNaN(fechaObj)) {
-    const dia = String(fechaObj.getDate()).padStart(2, "0");
-    const mes = String(fechaObj.getMonth() + 1).padStart(2, "0");
-    const anio = String(fechaObj.getFullYear()).slice(-2);
+  if (partes.length === 3) {
+    const anio = partes[0].slice(-2);
+    const mes = partes[1];
+    const dia = partes[2];
 
     nombreArchivo = `parte_${dia}-${mes}-${anio}.pdf`;
   }
@@ -603,15 +603,14 @@ async function generarPDF() {
 
 a.download = nombreArchivo;
 
+console.log("Nombre archivo:", nombreArchivo);
 
-
-
-   
     document.body.appendChild(a);
     a.click();
     a.remove();
 
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
+console.log("Nombre archivo:", nombreArchivo);
+
 
   } catch (error) {
     console.error(error);

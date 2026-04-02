@@ -1,0 +1,115 @@
+ <style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background: #f4f6f8;
+  }
+
+  h1 {
+    margin-bottom: 5px;
+  }
+
+  h2 {
+    margin-top: 25px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+  }
+
+  /* CONTENEDOR */
+  body > * {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* INPUTS */
+  input, textarea, select {
+    margin: 4px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 100%;
+    max-width: 300px;
+    background: white;
+  }
+
+  textarea {
+    max-width: 900px;
+    resize: vertical;
+  }
+
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 3px rgba(0,123,255,0.3);
+  }
+
+  /* BOTONES */
+  button {
+    margin: 10px 6px 10px 0;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  button:hover {
+    background: #0056b3;
+  }
+
+  /* BOTONES SECUNDARIOS */
+  button:nth-of-type(1),
+  button:nth-of-type(2),
+  button:nth-of-type(3) {
+    background: #6c757d;
+  }
+
+  button:nth-of-type(1):hover,
+  button:nth-of-type(2):hover,
+  button:nth-of-type(3):hover {
+    background: #545b62;
+  }
+
+  /* FILAS */
+  .fila {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 8px;
+    background: #ffffff;
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px solid #eee;
+  }
+
+  /* JSON */
+  pre {
+    background: #1e1e1e;
+    color: #00ff88;
+    padding: 10px;
+    border-radius: 6px;
+    overflow-x: auto;
+  }
+
+  /* MOVIL */
+  @media (max-width: 600px) {
+    input, textarea, select {
+      max-width: 100%;
+    }
+
+    .fila {
+      flex-direction: column;
+    }
+
+    button {
+      width: 100%;
+    }
+  }
+</style>

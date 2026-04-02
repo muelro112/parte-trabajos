@@ -578,16 +578,11 @@ async function generarPDF() {
       azul(page2, a.unidad, pos.x + 69, pos.y);
     });
 
-    // ===== GUARDAR =====
-    const pdfBytes = await pdf.save();
-    const blob = new Blob([pdfBytes], { type: "application/pdf" });
-    const url = URL.createObjectURL(blob);
+   // ===== GUARDAR =====
+const pdfBytes = await pdf.save();
+const blob = new Blob([pdfBytes], { type: "application/pdf" });
 
-    const a = document.createElement("a");
-    a.href = url;
-
-
-    let nombreArchivo = "parte.pdf";
+let nombreArchivo = "parte.pdf";
 
 if (d.g.f && d.g.f.includes("-")) {
   const partes = d.g.f.split("-"); // yyyy-mm-dd
@@ -601,13 +596,35 @@ if (d.g.f && d.g.f.includes("-")) {
   }
 }
 
+// 👉 Intentar compartir en móvil
+if (navigator.canShare && navigator.share) {
+  const file = new File([blob], nombreArchivo, { type: "application/pdf" });
+
+  if (navigator.canShare({ files: [file] })) {
+    try {
+      await navigator.share({
+        files: [file],
+        title: nombreArchivo
+      });
+      return;
+    } catch (err) {
+      console.log("Compartir cancelado:", err);
+    }
+  }
+}
+
+// 👉 Fallback descarga normal (PC)
+const url = URL.createObjectURL(blob);
+const a = document.createElement("a");
+a.href = url;
 a.download = nombreArchivo;
 
-console.log("Nombre archivo:", nombreArchivo);
+document.body.appendChild(a);
+a.click();
+a.remove();
 
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
+// 👉 No liberar demasiado rápido (clave en móvil)
+setTimeout(() => URL.revokeObjectURL(url), 30000);
 
 console.log("Nombre archivo:", nombreArchivo);
 

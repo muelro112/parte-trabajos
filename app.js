@@ -43,30 +43,30 @@ const POS_ACT = {
   "3": { x: 432, y: 713.50 },
   "4": { x: 432, y: 700.50 },
   "5": { x: 432, y: 687.8 },
-  "6": { x: 432, y: 662 },
-  "7": { x: 432, y: 649 },
-  "8": { x: 432, y: 636.4 },
-  "9": { x: 432, y: 623.5 },
-  "10": { x: 432, y: 610.6 },
-  "11": { x: 432, y: 597.8 },
-  "12": { x: 432, y: 559 },
-  "13": { x: 432, y: 546.40 },
-  "14": { x: 432, y: 533.50 },
-  "15": { x: 432, y: 520.60 },
-  "16": { x: 432, y: 507.80 },
-  "17": { x: 432, y: 495 },
-  "18": { x: 432, y: 482 },
-  "19": { x: 432, y: 469.20 },
-  "20": { x: 432, y: 456.40 },
-  "21": { x: 432, y: 443.55 },
-  "22": { x: 432, y: 430.70 },
-  "23": { x: 432, y: 417.90 },
-  "24": { x: 432, y: 405 },
-  "25": { x: 432, y: 392 },
-  "26": { x: 432, y: 379.30 },
-  "27": { x: 432, y: 366.50 },
-  "28": { x: 432, y: 353.60 },
-  "29": { x: 432, y: 340.75 }
+  "6": { x: 432, y: 675 },
+  "7": { x: 432, y: 662 },
+  "8": { x: 432, y: 649 },
+  "9": { x: 432, y: 636.5 },
+  "10": { x: 432, y: 624 },
+  "11": { x: 432, y: 611.5 },
+  "12": { x: 432, y: 598.5},
+  "13": { x: 432, y: 578.5 },
+  "14": { x: 432, y: 566 },
+  "15": { x: 432, y: 553 },
+  "16": { x: 432, y: 534 },
+  "17": { x: 432, y: 521.5 },
+  "18": { x: 432, y: 508.5 },
+  "19": { x: 432, y: 496 },
+  "20": { x: 432, y: 483 },
+  "21": { x: 432, y: 470.5 },
+  "22": { x: 432, y: 458 },
+  "23": { x: 432, y: 439 },
+  "24": { x: 432, y: 425.5 },
+  "25": { x: 432, y: 413.5 },
+  "26": { x: 432, y: 401 },
+  "27": { x: 432, y: 387.5 },
+  "28": { x: 432, y: 375 },
+  "29": { x: 432, y: 362 }
 };
 
 // ===== ARRAYS =====
@@ -78,7 +78,39 @@ let cortesTension = [];
 
 // ===== HELPERS DOM =====
 function el(id) {
-  return document.getElementById(id);
+  const elemento = document.getElementById(id);
+  if (!elemento) {
+    console.warn("No existe el elemento con id:", id);
+  }
+  return elemento;
+}
+
+function valor(id) {
+  const elemento = el(id);
+  return elemento ? elemento.value : "";
+}
+
+function ponerValor(id, value) {
+  const elemento = el(id);
+  if (elemento) elemento.value = value || "";
+}
+
+async function cargarBytesPlantillaPDF() {
+  // 1) Intenta cargar la plantilla desde la misma carpeta cuando la app está servida por web.
+  try {
+    const response = await fetch("plantilla.pdf");
+    if (response.ok) return await response.arrayBuffer();
+  } catch (error) {
+    console.warn("No se pudo cargar plantilla.pdf con fetch:", error);
+  }
+
+  // 2) Si abres el HTML como archivo local, fetch puede fallar. Entonces usa el selector de archivo.
+  const inputPlantilla = el("plantilla_pdf");
+  if (inputPlantilla && inputPlantilla.files && inputPlantilla.files.length > 0) {
+    return await inputPlantilla.files[0].arrayBuffer();
+  }
+
+  throw new Error("No se pudo cargar plantilla.pdf. Si estás abriendo el HTML desde una carpeta local, selecciona la plantilla PDF en el campo 'Plantilla PDF'.");
 }
 
 
@@ -126,10 +158,18 @@ function addActuacion() {
   <input placeholder="Código" readonly>
   <input placeholder="Cantidad">
   <input placeholder="Unidad">
-  <button type="button" onclick="this.parentElement.remove()">🗑 Borrar</button>
+  <button type="button" class="btn-borrar" onclick="this.parentElement.remove()">🗑 Borrar</button>
 `;
 
   cont.appendChild(div);
+
+
+  div.scrollIntoView({ behavior: "smooth", block: "center" });
+
+
+  div.querySelector("select").focus();
+
+
 }
 
 function ponerCodigo(select) {
@@ -163,11 +203,19 @@ function addTrabajador() {
   <input placeholder="DNI" oninput="uT(${i},'dni',this.value)">
   <input placeholder="Nombre" oninput="uT(${i},'nombre',this.value)">
   <input placeholder="Horas" oninput="uT(${i},'horas',this.value)">
-  <button type="button" onclick="borrarFila(this,'trabajadores',${i})">🗑 Borrar</button>
+  <button type="button" class="btn-borrar" onclick="borrarFila(this,'trabajadores',${i})">🗑 Borrar</button>
 `;
 
   el("trabajadores").appendChild(d);
   trabajadores.push({});
+
+
+  d.scrollIntoView({ behavior: "smooth", block: "center" });
+
+
+  d.querySelector("input").focus();
+
+
 }
 
 function uT(i, c, v) {
@@ -190,11 +238,22 @@ function addMaquina() {
   <input placeholder="Tipo" oninput="uM(${i},'tipo',this.value)">
   <input placeholder="Matrícula" oninput="uM(${i},'mat',this.value)">
   <input placeholder="Horas" oninput="uM(${i},'horas',this.value)">
-  <button type="button" onclick="borrarFila(this,'maquinaria',${i})">🗑 Borrar</button>
+  <button type="button" class="btn-borrar" onclick="borrarFila(this,'maquinaria',${i})">🗑 Borrar</button>
 `;
 
   el("maquinaria").appendChild(d);
   maquinaria.push({});
+
+
+  d.scrollIntoView({ behavior: "smooth", block: "center" });
+
+
+  d.scrollIntoView({ behavior: "smooth", block: "center" });
+  
+  
+  d.querySelector("input").focus();
+  
+
 }
 
 function uM(i, c, v) {
@@ -216,11 +275,19 @@ function addMaterial() {
   <input placeholder="Nombre" oninput="uMat(${i},'nom',this.value)">
   <input placeholder="Cantidad" oninput="uMat(${i},'cant',this.value)">
   <input placeholder="Unidad" oninput="uMat(${i},'uni',this.value)">
-  <button type="button" onclick="borrarFila(this,'materiales',${i})">🗑 Borrar</button>
+  <button type="button" class="btn-borrar" onclick="borrarFila(this,'materiales',${i})">🗑 Borrar</button>
 `;
 
   el("material").appendChild(d);
   materiales.push({});
+
+
+  d.scrollIntoView({ behavior: "smooth", block: "center" });
+
+
+  d.querySelector("input").focus();
+
+
 }
 
 function uMat(i, c, v) {
@@ -241,17 +308,25 @@ function addCorteVia() {
   d.innerHTML = `
   <input placeholder="Vía" oninput="uCV(${i},'via',this.value)">
   <input placeholder="Estación" oninput="uCV(${i},'est',this.value)">
-  <input placeholder="Inicio" oninput="uCV(${i},'ini',this.value)">
-  <input placeholder="Fin" oninput="uCV(${i},'fin',this.value)">
-  <input placeholder="H.Inicio" oninput="uCV(${i},'hi',this.value)">
-  <input placeholder="H.Fin" oninput="uCV(${i},'hf',this.value)">
-  <input placeholder="Concesión" oninput="uCV(${i},'hc',this.value)">
-  <input placeholder="Devolución" oninput="uCV(${i},'hd',this.value)">
-  <button type="button" onclick="borrarFila(this,'cortesVia',${i})">🗑 Borrar</button>
+  <input placeholder="Trayecto_Inicio" oninput="uCV(${i},'ini',this.value)">
+  <input placeholder="Trayecto_Fin" oninput="uCV(${i},'fin',this.value)">
+  <input placeholder="H.Previsto_Inicio" oninput="uCV(${i},'hi',this.value)">
+  <input placeholder="H.Previsto_Fin" oninput="uCV(${i},'hf',this.value)">
+  <input placeholder="H.Concesión" oninput="uCV(${i},'hc',this.value)">
+  <input placeholder="H.Devolución" oninput="uCV(${i},'hd',this.value)">
+  <button type="button" class="btn-borrar" onclick="borrarFila(this,'cortesVia',${i})">🗑 Borrar</button>
 `;
 
   el("corte_via").appendChild(d);
   cortesVia.push({});
+
+
+  d.scrollIntoView({ behavior: "smooth", block: "center" });
+
+
+  d.querySelector("input").focus();
+
+
 }
 
 function uCV(i, c, v) {
@@ -278,11 +353,19 @@ function addCorteTension() {
   <input placeholder="H.Fin" oninput="uCT(${i},'hf',this.value)">
   <input placeholder="Concesión" oninput="uCT(${i},'hc',this.value)">
   <input placeholder="Devolución" oninput="uCT(${i},'hd',this.value)">
-  <button type="button" onclick="borrarFila(this,'cortesTension',${i})">🗑 Borrar</button>
+  <button type="button" class="btn-borrar" onclick="borrarFila(this,'cortesTension',${i})">🗑 Borrar</button>
 `;
 
   el("corte_tension").appendChild(d);
   cortesTension.push({});
+
+
+  d.scrollIntoView({ behavior: "smooth", block: "center" });
+
+
+  d.querySelector("input").focus();
+
+
 }
 
 function uCT(i, c, v) {
@@ -305,10 +388,18 @@ function addUbicacion() {
   <input placeholder="Hilo">
   <input placeholder="PK inicio">
   <input placeholder="PK fin">
-  <button type="button" onclick="this.parentElement.remove()">🗑 Borrar</button>
+  <button type="button" class="btn-borrar" onclick="this.parentElement.remove()">🗑 Borrar</button>
 `;
 
   cont.appendChild(div);
+
+
+  div.scrollIntoView({ behavior: "smooth", block: "center" });
+
+
+  div.querySelector("input").focus();
+
+
 }
 
 // ===== DATOS =====
@@ -337,11 +428,11 @@ function getData() {
 
   return {
     g: {
-      ap: el("actuacion_principal").value,
-      f: el("fecha").value,
-      l: el("linea").value,
-      j: el("jefatura").value,
-      d: el("distrito").value
+      ap: valor("actuacion_principal"),
+      f: valor("fecha"),
+      l: valor("linea"),
+      j: valor("jefatura"),
+      d: valor("distrito")
     },
     t: trabajadores,
     m: maquinaria,
@@ -350,17 +441,18 @@ function getData() {
     ct: cortesTension,
     p2: {
       ubicaciones,
-      detalle: el("detalle_trabajos").value
+      detalle: valor("detalle_trabajos")
     },
     actuaciones,
-    obs: el("observaciones").value,
-    ute: el("agente_ute").value,
-    enc: el("encargado").value
+    obs: valor("observaciones"),
+    ute: valor("agente_ute"),
+    enc: valor("encargado")
   };
 }
 
 function verJSON() {
-  el("out").textContent = JSON.stringify(getData(), null, 2);
+  const salida = el("out");
+  if (salida) salida.textContent = JSON.stringify(getData(), null, 2);
 }
 
 // ===== TEXTO AZUL =====
@@ -413,13 +505,11 @@ function azulMulti(page, txt, x, y, maxChars = 80, lineHeight = 10, maxLines = 5
 // ===== PDF =====
 async function generarPDF() {
   try {
-    const response = await fetch("plantilla.pdf");
-
-    if (!response.ok) {
-      throw new Error("No se pudo cargar plantilla.pdf");
+    if (typeof PDFLib === "undefined") {
+      throw new Error("No se ha cargado pdf-lib.min.js");
     }
 
-    const bytes = await response.arrayBuffer();
+    const bytes = await cargarBytesPlantillaPDF();
     const pdf = await PDFLib.PDFDocument.load(bytes);
     const pages = pdf.getPages();
 
@@ -578,11 +668,16 @@ async function generarPDF() {
       azul(page2, a.unidad, pos.x + 69, pos.y);
     });
 
-   // ===== GUARDAR =====
-const pdfBytes = await pdf.save();
-const blob = new Blob([pdfBytes], { type: "application/pdf" });
+    // ===== GUARDAR =====
+    const pdfBytes = await pdf.save();
+    const blob = new Blob([pdfBytes], { type: "application/pdf" });
+    const url = URL.createObjectURL(blob);
 
-let nombreArchivo = "parte.pdf";
+    const a = document.createElement("a");
+    a.href = url;
+
+
+    let nombreArchivo = "parte.pdf";
 
 if (d.g.f && d.g.f.includes("-")) {
   const partes = d.g.f.split("-"); // yyyy-mm-dd
@@ -596,35 +691,13 @@ if (d.g.f && d.g.f.includes("-")) {
   }
 }
 
-// 👉 Intentar compartir en móvil
-if (navigator.canShare && navigator.share) {
-  const file = new File([blob], nombreArchivo, { type: "application/pdf" });
-
-  if (navigator.canShare({ files: [file] })) {
-    try {
-      await navigator.share({
-        files: [file],
-        title: nombreArchivo
-      });
-      return;
-    } catch (err) {
-      console.log("Compartir cancelado:", err);
-    }
-  }
-}
-
-// 👉 Fallback descarga normal (PC)
-const url = URL.createObjectURL(blob);
-const a = document.createElement("a");
-a.href = url;
 a.download = nombreArchivo;
 
-document.body.appendChild(a);
-a.click();
-a.remove();
+console.log("Nombre archivo:", nombreArchivo);
 
-// 👉 No liberar demasiado rápido (clave en móvil)
-setTimeout(() => URL.revokeObjectURL(url), 30000);
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
 
 console.log("Nombre archivo:", nombreArchivo);
 
@@ -672,11 +745,11 @@ function cargarDesdeJSON(d) {
   cortesTension = [];
 
   // ===== GENERALES =====
-  el("actuacion_principal").value = d.g?.ap || "";
-  el("fecha").value = d.g?.f || "";
-  el("linea").value = d.g?.l || "";
-  el("jefatura").value = d.g?.j || "";
-  el("distrito").value = d.g?.d || "";
+  ponerValor("actuacion_principal", d.g?.ap);
+  ponerValor("fecha", d.g?.f);
+  ponerValor("linea", d.g?.l);
+  ponerValor("jefatura", d.g?.j);
+  ponerValor("distrito", d.g?.d);
 
   // ===== TRABAJADORES =====
   const contTrab = el("trabajadores");
@@ -765,37 +838,39 @@ function cargarDesdeJSON(d) {
 
   // ===== CORTE TENSION =====
   const contCT = el("corte_tension");
-  contCT.innerHTML = "";
+  if (contCT) {
+    contCT.innerHTML = "";
 
-  if (d.ct && d.ct.length) {
-    d.ct.forEach(c => {
-      addCorteTension();
+    if (d.ct && d.ct.length) {
+      d.ct.forEach(c => {
+        addCorteTension();
 
-      const fila = contCT.lastElementChild;
-      const inputs = fila.querySelectorAll("input");
+        const fila = contCT.lastElementChild;
+        const inputs = fila.querySelectorAll("input");
 
-      inputs[0].value = c.via || "";
-      inputs[1].value = c.est || "";
-      inputs[2].value = c.ini || "";
-      inputs[3].value = c.fin || "";
-      inputs[4].value = c.hi || "";
-      inputs[5].value = c.hf || "";
-      inputs[6].value = c.hc || "";
-      inputs[7].value = c.hd || "";
+        inputs[0].value = c.via || "";
+        inputs[1].value = c.est || "";
+        inputs[2].value = c.ini || "";
+        inputs[3].value = c.fin || "";
+        inputs[4].value = c.hi || "";
+        inputs[5].value = c.hf || "";
+        inputs[6].value = c.hc || "";
+        inputs[7].value = c.hd || "";
 
-      cortesTension[cortesTension.length - 1] = { ...c };
-    });
+        cortesTension[cortesTension.length - 1] = { ...c };
+      });
+    }
   }
 
   // ===== OBS =====
-  el("observaciones").value = d.obs || "";
+  ponerValor("observaciones", d.obs);
 
   // ===== FIRMAS =====
-  el("agente_ute").value = d.ute || "";
-  el("encargado").value = d.enc || "";
+  ponerValor("agente_ute", d.ute);
+  ponerValor("encargado", d.enc);
 
   // ===== PAGINA 2 =====
-  el("detalle_trabajos").value = d.p2?.detalle || "";
+  ponerValor("detalle_trabajos", d.p2?.detalle);
 
   const contUb = el("ubicaciones");
   contUb.innerHTML = "";

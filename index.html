@@ -6,32 +6,39 @@
   <title>ADIF - Parte de Trabajo</title>
 
   <link rel="stylesheet" href="styles.css">
-  
+  <script src="pdf-lib.min.js"></script>
   <script src="app.js" defer></script>
   
 </head>
 
 <body>
 
-  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
-
  <!-- MARCA DE AGUA -->
   <div class="watermark">CADAVID</div>
 
   <!-- BOTONES NUEVO RECUPERAR GUARDAR -->
-  <button type="button" onclick="nuevoParte()">🆕 Nuevo</button>
+  <button class="btn-secundario" type="button" onclick="nuevoParte()">🆕 Nuevo</button>
 
   <!--<button type="button" onclick="recuperarParte()">♻️ Recuperar</button> -->
   
-  <button type="button" onclick="guardarManual()">💾 Guardar</button>
+  <button class="btn-secundario" type="button" onclick="guardarManual()">💾 Guardar</button>
 
-  <h1>ADIF - Mantenimiento de Infraestructura</h1>
+
+  <div class="plantilla-box">
+  <label for="plantilla_pdf">Plantilla PDF</label>
+  <input type="file" id="plantilla_pdf" accept="application/pdf">
+  <small>Solo necesario si abres la app desde una carpeta local.</small>
+</div>
+
+
+  <h1>ADIF</h1>
+  
   <h2>Registro de trabajos externos</h2>
 
   <!-- DATOS GENERALES -->
   <h2>Datos Generales</h2>
+  <input id="fecha" type="date" placeholder="Fecha">
   <input id="actuacion_principal" placeholder="Actuación principal">
-  <input id="fecha" type="date">
   <input id="linea" placeholder="Línea">
   <input id="jefatura" placeholder="Jefatura">
   <input id="distrito" placeholder="Distrito">
@@ -46,29 +53,28 @@
   <div id="maquinaria"></div>
   <button type="button" onclick="addMaquina()">+ Añadir vehículo</button>
 
-  <!-- MATERIAL -->
-  <h2>Material ADIF</h2>
-  <div id="material"></div>
-  <button type="button" onclick="addMaterial()">+ Añadir material</button>
-
   <!-- CORTE VIA -->
   <h2>Corte de Vía</h2>
   <div id="corte_via"></div>
   <button type="button" onclick="addCorteVia()">+ Añadir corte</button>
 
-  <!-- CORTE TENSION -->
-  <h2>Corte de Tensión</h2>
-  <div id="corte_tension"></div>
-  <button type="button" onclick="addCorteTension()">+ Añadir corte</button>
-
+  <!-- CORTE TENSION oculto: se mantiene el contenedor para compatibilidad con datos antiguos -->
+  <div id="corte_tension" style="display:none"></div>
+  
   <!-- PAGINA 2 -->
-  <h2>Página 2 - Ubicación</h2>
+   
+  <h2>Ubicación</h2>
   <div id="ubicaciones"></div>
   <button type="button" onclick="addUbicacion()">+ Añadir ubicación</button>
 
   <h2>Actuaciones</h2>
   <div id="actuaciones"></div>
   <button type="button" onclick="addActuacion()">+ Añadir actuación</button>
+
+<!-- MATERIAL -->
+  <h2>Material ADIF</h2>
+  <div id="material"></div>
+  <button type="button" onclick="addMaterial()">+ Añadir material</button>
 
   <h2>Detalle de los trabajos</h2>
 <textarea 
@@ -79,15 +85,8 @@
   placeholder="Detalle de los trabajos realizados...">
 </textarea>
 
-  <!-- OBS -->
-  <h2>Observaciones</h2>
-<textarea 
-  id="observaciones" 
-  rows="4" 
-  cols="80"
-  maxlength="300"
-  placeholder="Observaciones...">
-</textarea>
+  <!-- OBS ocultas: se mantiene el id para que el JS no falle si hay datos antiguos guardados -->
+  <textarea id="observaciones" style="display:none"></textarea>
 
   <!-- FIRMAS -->
   <h2>Firmas</h2>
@@ -99,8 +98,7 @@
   <!-- <button type="button" onclick="verJSON()">💾 Ver JSON</button>
   <pre id="out"></pre> -->
 
-<button onclick="generarPDF()" style="background:#28a745">📄 Generar PDF</button>
-
+<button class="btn-generar" type="button" onclick="generarPDF()">📄 Generar PDF</button>
 
 </body>
 </html>

@@ -1,5 +1,4 @@
-<style>
-  * {
+* {
     box-sizing: border-box;
   }
 
@@ -13,11 +12,11 @@
     margin-bottom: 5px;
   }
 
-  h2 {
-    margin-top: 25px;
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 5px;
-  }
+ h2 {
+  margin-top: 30px;
+  padding-top: 10px;
+  border-top: 2px solid #ddd;
+}
 
   /* MARCA DE AGUA */
   .watermark {
@@ -59,7 +58,8 @@
   input:focus, textarea:focus, select:focus {
     outline: none;
     border-color: #007bff;
-    box-shadow: 0 0 3px rgba(0,123,255,0.3);
+    box-shadow: 0 0 8px rgba(0,123,255,0.4);
+  transition: 0.2s;
   }
 
   /* BOTONES */
@@ -79,17 +79,30 @@
   }
 
   /* BOTONES SECUNDARIOS */
-  button:nth-of-type(1),
-  button:nth-of-type(2),
-  button:nth-of-type(3) {
-    background: #6c757d;
-  }
+  .btn-secundario {
+  background: #6c757d;
+}
 
-  button:nth-of-type(1):hover,
-  button:nth-of-type(2):hover,
-  button:nth-of-type(3):hover {
-    background: #545b62;
-  }
+.btn-secundario:hover {
+  background: #545b62;
+}
+
+.btn-generar {
+  background: #28a745;
+}
+
+.btn-generar:hover {
+  background: #1e7e34;
+}
+
+.btn-borrar {
+  background: #dc3545;
+  color: white;
+}
+
+.btn-borrar:hover {
+  background: #a71d2a;
+}
 
   /* FILAS */
   .fila {
@@ -102,6 +115,25 @@
     border-radius: 6px;
     border: 1px solid #eee;
   }
+
+  .plantilla-box {
+    background: #ffffff;
+    border: 1px solid #e3e3e3;
+    border-radius: 6px;
+    padding: 8px;
+    margin-top: 8px;
+  }
+
+  .plantilla-box small {
+    display: block;
+    color: #666;
+    margin: 4px;
+  }
+
+  .fila:focus-within {
+  background: #eaf4ff;
+  border-color: #007bff;
+}
 
   /* JSON */
   pre {
@@ -116,6 +148,7 @@
   @media (max-width: 600px) {
     input, textarea, select {
       max-width: 100%;
+      font-size: 16px;
     }
 
     .fila {
@@ -131,4 +164,5 @@
       color: rgba(0, 0, 0, 0.08);
     }
   }
-</style>
+
+  

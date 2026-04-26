@@ -95,6 +95,31 @@ function ponerValor(id, value) {
   if (elemento) elemento.value = value || "";
 }
 
+
+function activarNavegacionEnter() {
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter") return;
+
+    const actual = document.activeElement;
+
+    const elementos = Array.from(
+      document.querySelectorAll("input, textarea, select, button")
+    ).filter(elem => {
+      return !elem.disabled && elem.offsetParent !== null;
+    });
+
+    const index = elementos.indexOf(actual);
+
+    if (index >= 0 && index < elementos.length - 1) {
+      e.preventDefault();
+      elementos[index + 1].focus();
+    }
+  });
+}
+
+
+
+
 async function cargarBytesPlantillaPDF() {
   // 1) Intenta cargar la plantilla desde la misma carpeta cuando la app está servida por web.
   try {
@@ -929,5 +954,17 @@ window.addEventListener("DOMContentLoaded", () => {
       alert("Los datos guardados están dañados y no se pudieron cargar.");
     }
   }
+
+
+ // Para que de fecha a actuacion_principal
+  el("fecha").addEventListener("change", () => {
+    el("actuacion_principal").focus();
+  });
+
+
+activarNavegacionEnter();
+
+
+
 });
 

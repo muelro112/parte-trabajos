@@ -78,6 +78,26 @@
     background: #0056b3;
   }
 
+ .campo-fecha {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: 4px;
+}
+
+.campo-fecha label {
+  font-weight: bold;
+  margin-bottom: 4px;
+  color: #333;
+}
+
+.campo-fecha input[type="date"] {
+  cursor: pointer;
+  font-size: 16px;
+  border: 2px solid #007bff;
+  background: #ffffff;
+}
+
   /* BOTONES SECUNDARIOS */
   .btn-secundario {
   background: #6c757d;
@@ -164,5 +184,9 @@
       color: rgba(0, 0, 0, 0.08);
     }
   }
+  
+  .campo-fecha {
+  max-width: 100%;
+}
 
   

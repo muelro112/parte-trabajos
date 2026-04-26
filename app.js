@@ -495,6 +495,58 @@ function azul(p, txt, x, y, size = 9) {
 function azulMulti(page, txt, x, y, maxChars = 80, lineHeight = 10, maxLines = 5) {
   if (!txt) return;
 
+
+  //=== Enter_por_secciones===
+
+  function foco(id) {
+  const elemento = el(id);
+  if (elemento) elemento.focus();
+}
+
+function activarEnterPorSecciones() {
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter") return;
+
+    const actual = document.activeElement;
+    if (!actual) return;
+
+    // Distrito → Añadir trabajador
+    if (actual.id === "distrito") {
+      e.preventDefault();
+      foco("btn_add_trabajador");
+      return;
+    }
+
+    const fila = actual.closest(".fila");
+    if (!fila) return;
+
+    const campos = Array.from(fila.querySelectorAll("input, textarea, select"));
+    const index = campos.indexOf(actual);
+
+    if (index !== campos.length - 1) return;
+
+    e.preventDefault();
+
+    const contenedor = fila.parentElement.id;
+
+    if (contenedor === "trabajadores") {
+      foco("btn_add_maquina");
+    } else if (contenedor === "maquinaria") {
+      foco("btn_add_corte_via");
+    } else if (contenedor === "corte_via") {
+      foco("btn_add_ubicacion");
+    } else if (contenedor === "ubicaciones") {
+      foco("btn_add_actuacion");
+    } else if (contenedor === "actuaciones") {
+      foco("btn_add_material");
+    } else if (contenedor === "material") {
+      foco("detalle_trabajos");
+    }
+  });
+}
+
+
+
   // Respetar saltos manuales
   const bloques = txt.split("\n");
 
@@ -963,6 +1015,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 activarNavegacionEnter();
+
+activarEnterPorSecciones();
 
 
 

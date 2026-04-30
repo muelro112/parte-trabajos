@@ -76,6 +76,16 @@ let materiales = [];
 let cortesVia = [];
 let cortesTension = [];
 
+//Para datosGuardados
+
+let trabajadores = [];
+let maquinaria = [];
+let materiales = [];
+let cortesVia = [];
+let cortesTension = [];
+
+let OPERARIOS = [];
+
 // ===== HELPERS DOM =====
 function el(id) {
   const elemento = document.getElementById(id);
@@ -93,6 +103,62 @@ function valor(id) {
 function ponerValor(id, value) {
   const elemento = el(id);
   if (elemento) elemento.value = value || "";
+}
+
+//cargarOperarios
+
+
+
+async function cargarOperarios() {
+  try {
+    const response = await fetch("operarios.json");
+
+    if (!response.ok) {
+      throw new Error("No se pudo cargar operarios.json");
+    }
+
+    OPERARIOS = await response.json();
+    cargarDatalistOperarios();
+
+  } catch (error) {
+    console.warn("Operarios no cargados:", error);
+    OPERARIOS = [];
+  }
+}
+
+function cargarDatalistOperarios() {
+  const lista = el("lista_operarios");
+  if (!lista) return;
+
+  lista.innerHTML = OPERARIOS
+    .map(o => `<option value="${o.nombre}">`)
+    .join("");
+}
+
+function rellenarOperario(inputNombre, i) {
+  const nombre = inputNombre.value.trim();
+
+  const operario = OPERARIOS.find(o => o.nombre === nombre);
+
+  if (!operario) return;
+
+  const fila = inputNombre.closest(".fila");
+  const inputs = fila.querySelectorAll("input");
+
+  inputs[0].value = operario.categoria || "";
+  inputs[1].value = operario.conductor || "";
+  inputs[2].value = operario.recurso || "";
+  inputs[3].value = operario.dni || "";
+  inputs[4].value = operario.nombre || "";
+
+  trabajadores[i] = {
+    categoria: operario.categoria || "",
+    conductor: operario.conductor || "",
+    recurso: operario.recurso || "",
+    dni: operario.dni || "",
+    nombre: operario.nombre || "",
+    horas: trabajadores[i]?.horas || ""
+  };
 }
 
 /*
@@ -226,10 +292,12 @@ function addTrabajador() {
   <input placeholder="Conductor" oninput="uT(${i},'conductor',this.value)">
   <input placeholder="Recurso" oninput="uT(${i},'recurso',this.value)">
   <input placeholder="DNI" oninput="uT(${i},'dni',this.value)">
-  <input placeholder="Nombre" oninput="uT(${i},'nombre',this.value)">
+  
+  <input placeholder="Nombre" list="lista_operarios" oninput="uT(${i},'nombre',this.value)" onchange="rellenarOperario(this, ${i})">
+  
   <input placeholder="Horas" oninput="uT(${i},'horas',this.value)">
   <button type="button" class="btn-borrar" onclick="borrarFila(this,'trabajadores',${i})">🗑 Borrar</button>
-`;
+  `;
 
   el("trabajadores").appendChild(d);
   trabajadores.push({});
@@ -1008,6 +1076,9 @@ function cargarDesdeJSON(d) {
  // ===== CARGA AUTOMATICA =====
  
 window.addEventListener("DOMContentLoaded", () => {
+
+  cargarOperarios();
+  
   const datosGuardados = localStorage.getItem("parteADIF");
 
   if (datosGuardados) {
@@ -1030,9 +1101,7 @@ window.addEventListener("DOMContentLoaded", () => {
 activarNavegacionMovil();
 
 
-//activarNavegacionEnter();
 
-//activarEnterPorSecciones();
 
 
 

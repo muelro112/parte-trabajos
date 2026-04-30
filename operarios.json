@@ -1,0 +1,16 @@
+[
+  {
+    "nombre": "Juan Pérez García",
+    "dni": "12345678A",
+    "categoria": "Oficial",
+    "conductor": "Sí",
+    "recurso": "No"
+  },
+  {
+    "nombre": "Pedro López Ruiz",
+    "dni": "87654321B",
+    "categoria": "Peón",
+    "conductor": "No",
+    "recurso": "Sí"
+  }
+]

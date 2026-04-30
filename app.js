@@ -524,17 +524,20 @@ function azulMulti(page, txt, x, y, maxChars = 80, lineHeight = 10, maxLines = 5
 }
 
 // ===== FOCO =====
-
 function foco(id) {
   const elemento = el(id);
-  if (elemento) {
-    elemento.focus();
-    elemento.scrollIntoView({ behavior: "smooth", block: "center" });
-  } else {
-    console.warn("No se encontró el elemento:", id);
-  }
-}
 
+  if (!elemento) {
+    console.warn("No se encontró el elemento:", id);
+    return;
+  }
+
+  elemento.scrollIntoView({ behavior: "smooth", block: "center" });
+
+  setTimeout(() => {
+    elemento.focus();
+  }, 50);
+}
 
 // ===== NAVEGACION ENTER =====
 function activarNavegacionEnter() {
@@ -547,14 +550,15 @@ function activarNavegacionEnter() {
     const actual = document.activeElement;
     if (!actual) return;
 
-    // Si el foco está en un botón, dejamos que Enter pulse el botón
+    // Si está en un botón, dejamos que Enter lo pulse
     if (actual.tagName === "BUTTON") {
       return;
     }
 
-    // Distrito → botón añadir trabajador
+    // Distrito → Añadir trabajador
     if (actual.id === "distrito") {
       e.preventDefault();
+      e.stopPropagation();
       foco("btn_add_trabajador");
       return;
     }
@@ -568,11 +572,13 @@ function activarNavegacionEnter() {
 
       const index = campos.indexOf(actual);
 
-      // Si estamos en el último campo de una fila
       if (index === campos.length - 1) {
         e.preventDefault();
+        e.stopPropagation();
 
         const contenedor = fila.parentElement.id;
+
+        console.log("Último campo de:", contenedor);
 
         const saltos = {
           trabajadores: "btn_add_maquina",
@@ -594,7 +600,7 @@ function activarNavegacionEnter() {
       }
     }
 
-    // Navegación normal entre campos, sin botones
+    // Navegación normal entre campos
     const elementos = Array.from(
       document.querySelectorAll("input, textarea, select")
     ).filter(elem => {
@@ -1048,7 +1054,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 activarNavegacionEnter();
 
-activarEnterPorSecciones();
+//activarEnterPorSecciones();
 
 
 

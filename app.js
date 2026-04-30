@@ -523,6 +523,9 @@ function azulMulti(page, txt, x, y, maxChars = 80, lineHeight = 10, maxLines = 5
   });
 }
 
+
+//foco
+
 function foco(id) {
   const elemento = el(id);
 
@@ -531,86 +534,62 @@ function foco(id) {
     return;
   }
 
-  elemento.focus();
   elemento.scrollIntoView({ behavior: "smooth", block: "center" });
+
+  setTimeout(() => {
+    elemento.focus();
+  }, 50);
 }
 
 
-// ===== NAVEGACION ENTER / TAB =====
-function activarNavegacionEnter() {
-  if (window.navegacionEnterActivada) return;
-  window.navegacionEnterActivada = true;
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key !== "Enter" && e.key !== "Tab") return;
-
-    const actual = document.activeElement;
-    if (!actual) return;
-
-    // Si está en un botón y pulsa Enter, dejamos que el botón actúe
-    if (actual.tagName === "BUTTON" && e.key === "Enter") {
-      return;
-    }
+// ===== NAVEGACION ENTER =====
+function activarNavegacionMovil() {
+  document.addEventListener("focusout", (e) => {
+    const actual = e.target;
+    if (!actual.matches("input, textarea, select")) return;
 
     // Distrito → botón añadir trabajador
     if (actual.id === "distrito") {
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      foco("btn_add_trabajador");
+      setTimeout(() => {
+        foco("btn_add_trabajador");
+      }, 100);
       return;
     }
 
     const fila = actual.closest(".fila");
+    if (!fila) return;
 
-    if (fila) {
-      const campos = Array.from(
-        fila.querySelectorAll("input, textarea, select")
-      );
+    const campos = Array.from(
+      fila.querySelectorAll("input, textarea, select")
+    );
 
-      const index = campos.indexOf(actual);
+    const index = campos.indexOf(actual);
 
-      if (index === campos.length - 1) {
-        e.preventDefault();
-        e.stopImmediatePropagation();
+    // Solo si salimos del último campo de la fila
+    if (index !== campos.length - 1) return;
 
-        const contenedor = fila.parentElement.id;
+    const contenedor = fila.parentElement.id;
 
-        const saltos = {
-          trabajadores: "btn_add_maquina",
-          maquinaria: "btn_add_corte_via",
-          corte_via: "btn_add_corte_tension",
-          corte_tension: "btn_add_ubicacion",
-          ubicaciones: "btn_add_actuacion",
-          actuaciones: "btn_add_material",
-          material: "detalle_trabajos"
-        };
+    const saltos = {
+      trabajadores: "btn_add_maquina",
+      maquinaria: "btn_add_corte_via",
+      corte_via: "btn_add_corte_tension",
+      corte_tension: "btn_add_ubicacion",
+      ubicaciones: "btn_add_actuacion",
+      actuaciones: "btn_add_material",
+      material: "detalle_trabajos"
+    };
 
-        const siguiente = saltos[contenedor];
+    const siguiente = saltos[contenedor];
 
-        if (siguiente) {
-          foco(siguiente);
-        }
-
-        return;
-      }
+    if (siguiente) {
+      setTimeout(() => {
+        foco(siguiente);
+      }, 100);
     }
-
-    // Navegación normal entre campos
-    const elementos = Array.from(
-      document.querySelectorAll("input, textarea, select")
-    ).filter(elem => {
-      return !elem.disabled && elem.offsetParent !== null;
-    });
-
-    const index = elementos.indexOf(actual);
-
-    if (index >= 0 && index < elementos.length - 1) {
-      e.preventDefault();
-      elementos[index + 1].focus();
-    }
-
-  }, true); // ← importante
+  });
 }
+
 
 
 // ===== PDF =====
@@ -1048,7 +1027,10 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
 
-activarNavegacionEnter();
+activarNavegacionMovil();
+
+
+//activarNavegacionEnter();
 
 //activarEnterPorSecciones();
 

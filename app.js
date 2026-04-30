@@ -95,7 +95,7 @@ function ponerValor(id, value) {
   if (elemento) elemento.value = value || "";
 }
 
-
+/*
 function activarNavegacionEnter() {
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Enter") return;
@@ -116,7 +116,7 @@ function activarNavegacionEnter() {
     }
   });
 }
-
+*/
 
 
 

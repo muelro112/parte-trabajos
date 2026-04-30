@@ -502,17 +502,19 @@ function azulMulti(page, txt, x, y, maxChars = 80, lineHeight = 10, maxLines = 5
   function foco(id) {
   const elemento = el(id);
   if (elemento) elemento.focus();
+  }
 
 
   // ===== ENTER POR SECCIONES =====
-function activarEnterPorSecciones() {
+
+function activarNavegacionEnter() {
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Enter") return;
 
     const actual = document.activeElement;
     if (!actual) return;
 
-    // Distrito → Trabajador
+    // Distrito → Añadir trabajador
     if (actual.id === "distrito") {
       e.preventDefault();
       foco("btn_add_trabajador");
@@ -520,42 +522,56 @@ function activarEnterPorSecciones() {
     }
 
     const fila = actual.closest(".fila");
-    if (!fila) return;
 
-    const campos = Array.from(fila.querySelectorAll("input, textarea, select"));
-    const index = campos.indexOf(actual);
+    // Si estamos dentro de una fila
+    if (fila) {
+      const campos = Array.from(
+        fila.querySelectorAll("input, textarea, select")
+      );
 
-    // Solo actuar si es el último campo
-    if (index !== campos.length - 1) return;
+      const index = campos.indexOf(actual);
 
-    e.preventDefault();
+      // Si estamos en el último campo de la fila
+      if (index === campos.length - 1) {
+        e.preventDefault();
 
-    const contenedor = fila.parentElement.id;
+        const contenedor = fila.parentElement.id;
 
-    if (contenedor === "trabajadores") {
-      foco("btn_add_maquina");
+        if (contenedor === "trabajadores") {
+          foco("btn_add_maquina");
+        } else if (contenedor === "maquinaria") {
+          foco("btn_add_corte_via");
+        } else if (contenedor === "corte_via") {
+          foco("btn_add_corte_tension");
+        } else if (contenedor === "corte_tension") {
+          foco("btn_add_ubicacion");
+        } else if (contenedor === "ubicaciones") {
+          foco("btn_add_actuacion");
+        } else if (contenedor === "actuaciones") {
+          foco("btn_add_material");
+        } else if (contenedor === "material") {
+          foco("detalle_trabajos");
+        }
 
-    } else if (contenedor === "maquinaria") {
-      foco("btn_add_corte_via");
+        return;
+      }
+    }
 
-    } else if (contenedor === "corte_via") {
-      foco("btn_add_corte_tension");
+    // Navegación normal si no estamos en último campo de sección
+    const elementos = Array.from(
+      document.querySelectorAll("input, textarea, select, button")
+    ).filter(elem => {
+      return !elem.disabled && elem.offsetParent !== null;
+    });
 
-    } else if (contenedor === "corte_tension") {
-      foco("btn_add_ubicacion");
+    const index = elementos.indexOf(actual);
 
-    } else if (contenedor === "ubicaciones") {
-      foco("btn_add_actuacion");
-
-    } else if (contenedor === "actuaciones") {
-      foco("btn_add_material");
-
-    } else if (contenedor === "material") {
-      foco("detalle_trabajos");
+    if (index >= 0 && index < elementos.length - 1) {
+      e.preventDefault();
+      elementos[index + 1].focus();
     }
   });
 }
-
 
   // Respetar saltos manuales
   const bloques = txt.split("\n");
@@ -1024,9 +1040,9 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
 
-//  activarNavegacionEnter();
+activarNavegacionEnter();
 
-activarEnterPorSecciones();
+//activarEnterPorSecciones();
 
 
 

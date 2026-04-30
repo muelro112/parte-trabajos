@@ -542,54 +542,7 @@ function activarNavegacionEnter() {
     if (e.key !== "Enter") return;
 
     const actual = document.activeElement;
-    if (!actual) return;
 
-    // Distrito → Añadir trabajador
-    if (actual.id === "distrito") {
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      foco("btn_add_trabajador");
-      return;
-    }
-
-    const fila = actual.closest(".fila");
-
-    if (fila) {
-      const contenedor = fila.parentElement.id;
-
-      const campos = Array.from(
-        fila.querySelectorAll("input, textarea, select")
-      );
-
-      const index = campos.indexOf(actual);
-
-      const esUltimoCampo = index === campos.length - 1;
-
-      if (esUltimoCampo) {
-        e.preventDefault();
-        e.stopImmediatePropagation();
-
-        if (contenedor === "trabajadores") {
-          foco("btn_add_maquina");
-        } else if (contenedor === "maquinaria") {
-          foco("btn_add_corte_via");
-        } else if (contenedor === "corte_via") {
-          foco("btn_add_corte_tension");
-        } else if (contenedor === "corte_tension") {
-          foco("btn_add_ubicacion");
-        } else if (contenedor === "ubicaciones") {
-          foco("btn_add_actuacion");
-        } else if (contenedor === "actuaciones") {
-          foco("btn_add_material");
-        } else if (contenedor === "material") {
-          foco("detalle_trabajos");
-        }
-
-        return;
-      }
-    }
-
-    // Navegación normal
     const elementos = Array.from(
       document.querySelectorAll("input, textarea, select, button")
     ).filter(elem => {
@@ -604,6 +557,7 @@ function activarNavegacionEnter() {
     }
   });
 }
+
 
 // ===== PDF =====
 async function generarPDF() {

@@ -1042,7 +1042,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 activarNavegacionEnter();
 
-//activarEnterPorSecciones();
+activarEnterPorSecciones();
 
 
 

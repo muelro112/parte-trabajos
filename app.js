@@ -544,8 +544,10 @@ function activarNavegacionEnter() {
     const actual = document.activeElement;
     if (!actual) return;
 
+    // Distrito → Añadir trabajador
     if (actual.id === "distrito") {
       e.preventDefault();
+      e.stopImmediatePropagation();
       foco("btn_add_trabajador");
       return;
     }
@@ -553,37 +555,41 @@ function activarNavegacionEnter() {
     const fila = actual.closest(".fila");
 
     if (fila) {
+      const contenedor = fila.parentElement.id;
+
       const campos = Array.from(
         fila.querySelectorAll("input, textarea, select")
       );
 
       const index = campos.indexOf(actual);
 
-      if (index === campos.length - 1) {
+      const esUltimoCampo = index === campos.length - 1;
+
+      if (esUltimoCampo) {
         e.preventDefault();
+        e.stopImmediatePropagation();
 
-        const contenedor = fila.parentElement.id;
-
-        const saltos = {
-          trabajadores: "btn_add_maquina",
-          maquinaria: "btn_add_corte_via",
-          corte_via: "btn_add_corte_tension",
-          corte_tension: "btn_add_ubicacion",
-          ubicaciones: "btn_add_actuacion",
-          actuaciones: "btn_add_material",
-          material: "detalle_trabajos"
-        };
-
-        const siguienteId = saltos[contenedor];
-
-        if (siguienteId) {
-          foco(siguienteId);
+        if (contenedor === "trabajadores") {
+          foco("btn_add_maquina");
+        } else if (contenedor === "maquinaria") {
+          foco("btn_add_corte_via");
+        } else if (contenedor === "corte_via") {
+          foco("btn_add_corte_tension");
+        } else if (contenedor === "corte_tension") {
+          foco("btn_add_ubicacion");
+        } else if (contenedor === "ubicaciones") {
+          foco("btn_add_actuacion");
+        } else if (contenedor === "actuaciones") {
+          foco("btn_add_material");
+        } else if (contenedor === "material") {
+          foco("detalle_trabajos");
         }
 
         return;
       }
     }
 
+    // Navegación normal
     const elementos = Array.from(
       document.querySelectorAll("input, textarea, select, button")
     ).filter(elem => {
@@ -598,7 +604,6 @@ function activarNavegacionEnter() {
     }
   });
 }
-
 
 // ===== PDF =====
 async function generarPDF() {

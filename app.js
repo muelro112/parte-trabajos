@@ -524,12 +524,19 @@ function azulMulti(page, txt, x, y, maxChars = 80, lineHeight = 10, maxLines = 5
 }
 
 // ===== FOCO =====
+
 function foco(id) {
   const elemento = el(id);
-  if (elemento) elemento.focus();
+  if (elemento) {
+    elemento.focus();
+    elemento.scrollIntoView({ behavior: "smooth", block: "center" });
+  } else {
+    console.warn("No se encontró el elemento:", id);
+  }
 }
 
 // ===== NAVEGACION ENTER =====
+
 function activarNavegacionEnter() {
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Enter") return;
@@ -557,20 +564,20 @@ function activarNavegacionEnter() {
 
         const contenedor = fila.parentElement.id;
 
-        if (contenedor === "trabajadores") {
-          foco("btn_add_maquina");
-        } else if (contenedor === "maquinaria") {
-          foco("btn_add_corte_via");
-        } else if (contenedor === "corte_via") {
-          foco("btn_add_corte_tension");
-        } else if (contenedor === "corte_tension") {
-          foco("btn_add_ubicacion");
-        } else if (contenedor === "ubicaciones") {
-          foco("btn_add_actuacion");
-        } else if (contenedor === "actuaciones") {
-          foco("btn_add_material");
-        } else if (contenedor === "material") {
-          foco("detalle_trabajos");
+        const saltos = {
+          trabajadores: "btn_add_maquina",
+          maquinaria: "btn_add_corte_via",
+          corte_via: "btn_add_corte_tension",
+          corte_tension: "btn_add_ubicacion",
+          ubicaciones: "btn_add_actuacion",
+          actuaciones: "btn_add_material",
+          material: "detalle_trabajos"
+        };
+
+        const siguienteId = saltos[contenedor];
+
+        if (siguienteId) {
+          foco(siguienteId);
         }
 
         return;

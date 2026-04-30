@@ -491,22 +491,45 @@ function azul(p, txt, x, y, size = 9) {
 }
 
 // ===== TEXTO MULTILINEA =====
-
 function azulMulti(page, txt, x, y, maxChars = 80, lineHeight = 10, maxLines = 5) {
   if (!txt) return;
+
+  const bloques = txt.split("\n");
+
+  let lineasFinales = [];
+
+  bloques.forEach(bloque => {
+    const palabras = bloque.split(" ");
+    let linea = "";
+
+    palabras.forEach(palabra => {
+      const prueba = linea ? linea + " " + palabra : palabra;
+
+      if (prueba.length > maxChars) {
+        lineasFinales.push(linea);
+        linea = palabra;
+      } else {
+        linea = prueba;
+      }
+    });
+
+    if (linea) lineasFinales.push(linea);
+  });
+
+  lineasFinales = lineasFinales.slice(0, maxLines);
+
+  lineasFinales.forEach((l, i) => {
+    azul(page, l, x, y - (i * lineHeight));
+  });
 }
 
-
- //=== Foco ===
-
-  function foco(id) {
+// ===== FOCO =====
+function foco(id) {
   const elemento = el(id);
   if (elemento) elemento.focus();
-  }
+}
 
-
-  // ===== ENTER POR SECCIONES =====
-
+// ===== NAVEGACION ENTER =====
 function activarNavegacionEnter() {
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Enter") return;
@@ -514,7 +537,6 @@ function activarNavegacionEnter() {
     const actual = document.activeElement;
     if (!actual) return;
 
-    // Distrito → Añadir trabajador
     if (actual.id === "distrito") {
       e.preventDefault();
       foco("btn_add_trabajador");
@@ -523,7 +545,6 @@ function activarNavegacionEnter() {
 
     const fila = actual.closest(".fila");
 
-    // Si estamos dentro de una fila
     if (fila) {
       const campos = Array.from(
         fila.querySelectorAll("input, textarea, select")
@@ -531,7 +552,6 @@ function activarNavegacionEnter() {
 
       const index = campos.indexOf(actual);
 
-      // Si estamos en el último campo de la fila
       if (index === campos.length - 1) {
         e.preventDefault();
 
@@ -557,7 +577,6 @@ function activarNavegacionEnter() {
       }
     }
 
-    // Navegación normal si no estamos en último campo de sección
     const elementos = Array.from(
       document.querySelectorAll("input, textarea, select, button")
     ).filter(elem => {
@@ -573,37 +592,6 @@ function activarNavegacionEnter() {
   });
 }
 
-  // Respetar saltos manuales
-  const bloques = txt.split("\n");
-
-  let lineasFinales = [];
-
-  bloques.forEach(bloque => {
-    const palabras = bloque.split(" ");
-    let linea = "";
-
-    palabras.forEach(palabra => {
-      const prueba = linea ? linea + " " + palabra : palabra;
-
-      if (prueba.length > maxChars) {
-        lineasFinales.push(linea);
-        linea = palabra;
-      } else {
-        linea = prueba;
-      }
-    });
-
-    if (linea) lineasFinales.push(linea);
-  });
-
-  // Limitar número de líneas
-  lineasFinales = lineasFinales.slice(0, maxLines);
-
-  // Dibujar
-  lineasFinales.forEach((l, i) => {
-    azul(page, l, x, y - (i * lineHeight));
-  });
-}
 
 // ===== PDF =====
 async function generarPDF() {

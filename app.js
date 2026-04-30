@@ -523,42 +523,39 @@ function azulMulti(page, txt, x, y, maxChars = 80, lineHeight = 10, maxLines = 5
   });
 }
 
-// ===== FOCO =====
 function foco(id) {
   const elemento = el(id);
 
   if (!elemento) {
-    console.warn("No se encontró el elemento:", id);
+    console.warn("No se encontró:", id);
     return;
   }
 
+  elemento.focus();
   elemento.scrollIntoView({ behavior: "smooth", block: "center" });
-
-  setTimeout(() => {
-    elemento.focus();
-  }, 50);
 }
 
-// ===== NAVEGACION ENTER =====
+
+// ===== NAVEGACION ENTER / TAB =====
 function activarNavegacionEnter() {
   if (window.navegacionEnterActivada) return;
   window.navegacionEnterActivada = true;
 
   document.addEventListener("keydown", (e) => {
-    if (e.key !== "Enter") return;
+    if (e.key !== "Enter" && e.key !== "Tab") return;
 
     const actual = document.activeElement;
     if (!actual) return;
 
-    // Si está en un botón, dejamos que Enter lo pulse
-    if (actual.tagName === "BUTTON") {
+    // Si está en un botón y pulsa Enter, dejamos que el botón actúe
+    if (actual.tagName === "BUTTON" && e.key === "Enter") {
       return;
     }
 
-    // Distrito → Añadir trabajador
+    // Distrito → botón añadir trabajador
     if (actual.id === "distrito") {
       e.preventDefault();
-      e.stopPropagation();
+      e.stopImmediatePropagation();
       foco("btn_add_trabajador");
       return;
     }
@@ -574,11 +571,9 @@ function activarNavegacionEnter() {
 
       if (index === campos.length - 1) {
         e.preventDefault();
-        e.stopPropagation();
+        e.stopImmediatePropagation();
 
         const contenedor = fila.parentElement.id;
-
-        console.log("Último campo de:", contenedor);
 
         const saltos = {
           trabajadores: "btn_add_maquina",
@@ -613,7 +608,8 @@ function activarNavegacionEnter() {
       e.preventDefault();
       elementos[index + 1].focus();
     }
-  });
+
+  }, true); // ← importante
 }
 
 

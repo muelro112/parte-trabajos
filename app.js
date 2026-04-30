@@ -535,16 +535,68 @@ function foco(id) {
   }
 }
 
-// ===== NAVEGACION ENTER =====
 
+// ===== NAVEGACION ENTER =====
 function activarNavegacionEnter() {
+  if (window.navegacionEnterActivada) return;
+  window.navegacionEnterActivada = true;
+
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Enter") return;
 
     const actual = document.activeElement;
+    if (!actual) return;
 
+    // Si el foco está en un botón, dejamos que Enter pulse el botón
+    if (actual.tagName === "BUTTON") {
+      return;
+    }
+
+    // Distrito → botón añadir trabajador
+    if (actual.id === "distrito") {
+      e.preventDefault();
+      foco("btn_add_trabajador");
+      return;
+    }
+
+    const fila = actual.closest(".fila");
+
+    if (fila) {
+      const campos = Array.from(
+        fila.querySelectorAll("input, textarea, select")
+      );
+
+      const index = campos.indexOf(actual);
+
+      // Si estamos en el último campo de una fila
+      if (index === campos.length - 1) {
+        e.preventDefault();
+
+        const contenedor = fila.parentElement.id;
+
+        const saltos = {
+          trabajadores: "btn_add_maquina",
+          maquinaria: "btn_add_corte_via",
+          corte_via: "btn_add_corte_tension",
+          corte_tension: "btn_add_ubicacion",
+          ubicaciones: "btn_add_actuacion",
+          actuaciones: "btn_add_material",
+          material: "detalle_trabajos"
+        };
+
+        const siguiente = saltos[contenedor];
+
+        if (siguiente) {
+          foco(siguiente);
+        }
+
+        return;
+      }
+    }
+
+    // Navegación normal entre campos, sin botones
     const elementos = Array.from(
-      document.querySelectorAll("input, textarea, select, button")
+      document.querySelectorAll("input, textarea, select")
     ).filter(elem => {
       return !elem.disabled && elem.offsetParent !== null;
     });

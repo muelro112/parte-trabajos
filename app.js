@@ -209,7 +209,7 @@ function rellenarOperarioSelect(select, i) {
     recurso: operario.recurso || "",
     dni: operario.dni || "",
     nombre: operario.nombre || "",
-    horas: trabajadores[i]?.horas || ""
+    horas: operario.horas || ""
   };
 }
 

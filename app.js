@@ -78,12 +78,6 @@ let cortesTension = [];
 
 //Para datosGuardados
 
-let trabajadores = [];
-let maquinaria = [];
-let materiales = [];
-let cortesVia = [];
-let cortesTension = [];
-
 let OPERARIOS = [];
 
 // ===== HELPERS DOM =====

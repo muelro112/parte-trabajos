@@ -179,6 +179,49 @@ function activarNavegacionEnter() {
 */
 
 
+// Despleglable Operarios
+
+function cargarSelectOperarios(select) {
+  select.innerHTML = `<option value="">Seleccionar operario</option>`;
+
+  OPERARIOS.forEach((o, index) => {
+    select.innerHTML += `<option value="${index}">${o.nombre}</option>`;
+  });
+}
+
+function rellenarOperarioSelect(select, i) {
+  const operario = OPERARIOS[select.value];
+  if (!operario) return;
+
+  const fila = select.closest(".fila");
+  const inputs = fila.querySelectorAll("input");
+
+  inputs[0].value = operario.categoria || "";
+  inputs[1].value = operario.conductor || "";
+  inputs[2].value = operario.recurso || "";
+  inputs[3].value = operario.dni || "";
+  inputs[4].value = operario.nombre || "";
+
+  trabajadores[i] = {
+    categoria: operario.categoria || "",
+    conductor: operario.conductor || "",
+    recurso: operario.recurso || "",
+    dni: operario.dni || "",
+    nombre: operario.nombre || "",
+    horas: trabajadores[i]?.horas || ""
+  };
+}
+
+
+
+
+
+
+
+
+
+
+
 
 async function cargarBytesPlantillaPDF() {
   // 1) Intenta cargar la plantilla desde la misma carpeta cuando la app está servida por web.
@@ -284,7 +327,12 @@ function addTrabajador() {
 
   d.innerHTML = `
 
-  <input placeholder="Nombre" list="lista_operarios" oninput="uT(${i},'nombre',this.value)" onchange="rellenarOperario(this, ${i})">
+  <select onchange="rellenarOperarioSelect(this, ${i})">
+     <option value="">Seleccionar operario</option>
+  </select>
+
+  <input placeholder="Nombre" oninput="uT(${i},'nombre',this.value)">
+
 
   <input placeholder="Categoría" oninput="uT(${i},'categoria',this.value)">
   <input placeholder="Conductor" oninput="uT(${i},'conductor',this.value)">
@@ -297,6 +345,10 @@ function addTrabajador() {
 
   el("trabajadores").appendChild(d);
   trabajadores.push({});
+
+
+  const selectOperario = d.querySelector("select");
+cargarSelectOperarios(selectOperario);
 
 
   d.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -436,10 +488,10 @@ function addCorteTension() {
   d.innerHTML = `
   <input placeholder="Vía" oninput="uCT(${i},'via',this.value)">
   <input placeholder="Estación" oninput="uCT(${i},'est',this.value)">
-  <input placeholder="Inicio" oninput="uCT(${i},'ini',this.value)">
-  <input placeholder="Fin" oninput="uCT(${i},'fin',this.value)">
-  <input placeholder="H.Inicio" oninput="uCT(${i},'hi',this.value)">
-  <input placeholder="H.Fin" oninput="uCT(${i},'hf',this.value)">
+  <input placeholder="Trayecto_Inicio" oninput="uCT(${i},'ini',this.value)">
+  <input placeholder="Trayecto_Fin" oninput="uCT(${i},'fin',this.value)">
+  <input placeholder="H.Previsto_Inicio" oninput="uCT(${i},'hi',this.value)">
+  <input placeholder="H.Previsto_Fin" oninput="uCT(${i},'hf',this.value)">
   <input placeholder="Concesión" oninput="uCT(${i},'hc',this.value)">
   <input placeholder="Devolución" oninput="uCT(${i},'hd',this.value)">
   <button type="button" class="btn-borrar" onclick="borrarFila(this,'cortesTension',${i})">🗑 Borrar</button>

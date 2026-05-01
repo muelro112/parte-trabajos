@@ -1,16 +1,130 @@
 [
   {
-    "nombre": "Juan Pérez García",
-    "dni": "12345678A",
+    "nombre": "Rafael Jimenez",
+    "dni": "AFERS",
     "categoria": "Oficial",
     "conductor": "Sí",
-    "recurso": "No"
+    "recurso": "No",
+    "horas": "8"
   },
   {
-    "nombre": "Pedro López Ruiz",
-    "dni": "87654321B",
-    "categoria": "Peón",
+    "nombre": "Abdelkala Nettah",
+    "dni": "INFECCO",
+    "categoria": "Oficial",
     "conductor": "No",
-    "recurso": "Sí"
+    "recurso": "No",
+    "horas": "8"
+  },
+  {
+    "nombre": "Ammed Nettah",
+    "dni": "INFECCO",
+    "categoria": "Oficial",
+    "conductor": "No",
+    "recurso": "No",
+    "horas": "8"
+  },
+  {
+    "nombre": "Carles Font",
+    "dni": "INFECCO",
+    "categoria": "Oficial",
+    "conductor": "No",
+    "recurso": "No",
+    "horas": "8"
+  },
+  {
+    "nombre": "Yasym Elfasi",
+    "dni": "INFECCO",
+    "categoria": "Oficial",
+    "conductor": "No",
+    "recurso": "No",
+    "horas": "8"
+  },
+  {
+    "nombre": "Yasym Ibraim",
+   "dni": "INFECCO",
+    "categoria": "Oficial",
+    "conductor": "No",
+    "recurso": "No",
+    "horas": "8"
+  },
+  {
+    "nombre": "Daniel Cazalla",
+    "dni": "INTERRIS",
+    "categoria": "Oficial Mini",
+    "conductor": "Giratoria",
+    "recurso": "No",
+    "horas": "8"
+  },
+  {
+    "nombre": "Jose Antonio Martinez",
+    "dni": "INTERRIS",
+    "categoria": "Oficial Mini",
+    "conductor": "Giratoria",
+    "recurso": "No",
+    "horas": "8"
+  },
+  {
+    "nombre": "Pedro Lopez Lopez",
+    "dni": "Rover",
+    "categoria": "OMI",
+    "conductor": "Bateadora",
+    "recurso": "No",
+    "horas": "8"
+  },
+  {
+    "nombre": "Jose Rafael Santolalla",
+    "dni": "Rover",
+    "categoria": "Capataz",
+    "conductor": "Bateadora",
+    "recurso": "No",
+    "horas": "8"
+  },
+  {
+    "nombre": "Benjamin Perez",
+    "dni": "Rover",
+    "categoria": "Oficial",
+    "conductor": "Bateadora",
+    "recurso": "No",
+    "horas": "8"
+  },
+  {
+    "nombre": "Teodoro Muñoz",
+    "dni": "Rover",
+    "categoria": "Oficial",
+    "conductor": "Bateadora",
+    "recurso": "No",
+    "horas": "8"
+  },
+  {
+    "nombre": "Nico Villalcañas",
+    "dni": "Rover",
+    "categoria": "OMI",
+    "conductor": "Perfiladora",
+    "recurso": "No",
+    "horas": "8"
+  },
+  {
+    "nombre": "Nico Villalcañas",
+    "dni": "Rover",
+    "categoria": "Oficial",
+    "conductor": "No",
+    "recurso": "No",
+    "horas": "8"
+  },
+  {
+    "nombre": "Klever Acosta",
+    "dni": "SERCAT",
+    "categoria": "Oficial",
+    "conductor": "No",
+    "recurso": "No",
+    "horas": "8"
+  },
+  {
+    "nombre": "Navil Tachi",
+    "dni": "SERCAT",
+    "categoria": "Oficial",
+    "conductor": "No",
+    "recurso": "No",
+    "horas": "8"
   }
 ]

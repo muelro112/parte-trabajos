@@ -280,14 +280,16 @@ function addTrabajador() {
   const i = trabajadores.length;
   const d = document.createElement("div");
   d.className = "fila";
+// ==== Nombre cambiado de lugar para la seleccion ====
 
   d.innerHTML = `
+
+  <input placeholder="Nombre" list="lista_operarios" oninput="uT(${i},'nombre',this.value)" onchange="rellenarOperario(this, ${i})">
+
   <input placeholder="Categoría" oninput="uT(${i},'categoria',this.value)">
   <input placeholder="Conductor" oninput="uT(${i},'conductor',this.value)">
   <input placeholder="Recurso" oninput="uT(${i},'recurso',this.value)">
   <input placeholder="DNI" oninput="uT(${i},'dni',this.value)">
-  
-  <input placeholder="Nombre" list="lista_operarios" oninput="uT(${i},'nombre',this.value)" onchange="rellenarOperario(this, ${i})">
   
   <input placeholder="Horas" oninput="uT(${i},'horas',this.value)">
   <button type="button" class="btn-borrar" onclick="borrarFila(this,'trabajadores',${i})">🗑 Borrar</button>
@@ -1084,6 +1086,11 @@ window.addEventListener("DOMContentLoaded", () => {
       alert("Los datos guardados están dañados y no se pudieron cargar.");
     }
   }
+
+  // ===== VALORES POR DEFECTO =====
+if (!valor("linea")) ponerValor("linea", "200");
+if (!valor("jefatura")) ponerValor("jefatura", "Barcelona");
+if (!valor("distrito")) ponerValor("distrito", "St. Vicent");
 
 
  // Para que de fecha a actuacion_principal

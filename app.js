@@ -201,7 +201,7 @@ function rellenarOperarioSelect(select, i) {
   inputs[2].value = operario.recurso || "";
   inputs[3].value = operario.dni || "";
   inputs[4].value = operario.nombre || "";
-  inputs[5].value = operario.horas || "";
+  inputs[5].value = operario.horas || "";   // 👈 AQUI ESTÁ LA CLAVE
 
   trabajadores[i] = {
     categoria: operario.categoria || "",
@@ -209,7 +209,7 @@ function rellenarOperarioSelect(select, i) {
     recurso: operario.recurso || "",
     dni: operario.dni || "",
     nombre: operario.nombre || "",
-    horas: operario.horas || ""
+    horas: operario.horas || "" 
   };
 }
 
@@ -332,14 +332,11 @@ function addTrabajador() {
      <option value="">Seleccionar operario</option>
   </select>
 
-  <input placeholder="Nombre" oninput="uT(${i},'nombre',this.value)">
-
-
-  <input placeholder="Categoría" oninput="uT(${i},'categoria',this.value)">
+   <input placeholder="Categoría" oninput="uT(${i},'categoria',this.value)">
   <input placeholder="Conductor" oninput="uT(${i},'conductor',this.value)">
   <input placeholder="Recurso" oninput="uT(${i},'recurso',this.value)">
   <input placeholder="DNI" oninput="uT(${i},'dni',this.value)">
-  
+   <input placeholder="Nombre" oninput="uT(${i},'nombre',this.value)">
   <input placeholder="Horas" oninput="uT(${i},'horas',this.value)">
   <button type="button" class="btn-borrar" onclick="borrarFila(this,'trabajadores',${i})">🗑 Borrar</button>
   `;

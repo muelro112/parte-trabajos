@@ -201,6 +201,7 @@ function rellenarOperarioSelect(select, i) {
   inputs[2].value = operario.recurso || "";
   inputs[3].value = operario.dni || "";
   inputs[4].value = operario.nombre || "";
+  inputs[5].value = operario.horas || "";
 
   trabajadores[i] = {
     categoria: operario.categoria || "",

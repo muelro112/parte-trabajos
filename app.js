@@ -129,6 +129,42 @@ function cargarDatalistOperarios() {
     .join("");
 }
 
+
+
+function cargarSelectEmpresas(selectEmpresa) {
+  const empresas = [...new Set(
+    OPERARIOS
+      .map(o => o.empresa)
+      .filter(Boolean)
+  )];
+
+  selectEmpresa.innerHTML = `<option value="">Empresa</option>`;
+
+  empresas.forEach(empresa => {
+    selectEmpresa.innerHTML += `<option value="${empresa}">${empresa}</option>`;
+  });
+}
+
+function cargarOperariosPorEmpresa(selectEmpresa) {
+  const fila = selectEmpresa.closest(".fila");
+  const selects = fila.querySelectorAll("select");
+  const selectOperario = selects[1];
+
+  const empresa = selectEmpresa.value;
+
+  const operariosFiltrados = OPERARIOS.filter(o => o.empresa === empresa);
+
+  selectOperario.innerHTML = `<option value="">Operario</option>`;
+
+  operariosFiltrados.forEach(o => {
+    selectOperario.innerHTML += `<option value="${o.nombre}">${o.nombre}</option>`;
+  });
+
+  selectOperario.focus();
+}
+
+
+
 function rellenarOperario(inputNombre, i) {
   const nombre = inputNombre.value.trim();
 
@@ -190,7 +226,10 @@ function cargarSelectOperarios(select) {
 }
 
 function rellenarOperarioSelect(select, i) {
-  const operario = OPERARIOS[select.value];
+  
+  const nombre = select.value;
+  const operario = OPERARIOS.find(o => o.nombre === nombre);
+
   if (!operario) return;
 
   const fila = select.closest(".fila");
@@ -328,15 +367,19 @@ function addTrabajador() {
 
   d.innerHTML = `
 
-  <select onchange="rellenarOperarioSelect(this, ${i})">
-     <option value="">Seleccionar operario</option>
-  </select>
+   <select onchange="cargarOperariosPorEmpresa(this)">
+   <option value="">Empresa</option>
+   </select>
 
-   <input placeholder="Categoría" oninput="uT(${i},'categoria',this.value)">
+   <select onchange="rellenarOperarioSelect(this, ${i})">
+   <option value="">Operario</option>
+   </select>
+
+  <input placeholder="Categoría" oninput="uT(${i},'categoria',this.value)">
   <input placeholder="Conductor" oninput="uT(${i},'conductor',this.value)">
   <input placeholder="Recurso" oninput="uT(${i},'recurso',this.value)">
   <input placeholder="DNI" oninput="uT(${i},'dni',this.value)">
-   <input placeholder="Nombre" oninput="uT(${i},'nombre',this.value)">
+  <input placeholder="Nombre" oninput="uT(${i},'nombre',this.value)">
   <input placeholder="Horas" oninput="uT(${i},'horas',this.value)">
   <button type="button" class="btn-borrar" onclick="borrarFila(this,'trabajadores',${i})">🗑 Borrar</button>
   `;
@@ -345,16 +388,19 @@ function addTrabajador() {
   trabajadores.push({});
 
 
-  const selectOperario = d.querySelector("select");
-cargarSelectOperarios(selectOperario);
+// cargar opciones del desplegable
+const selects = d.querySelectorAll("select");
+const selectEmpresa = selects[0];
 
+if (selectEmpresa) {
+  cargarSelectEmpresas(selectEmpresa);
+}
 
-  d.scrollIntoView({ behavior: "smooth", block: "center" });
+d.scrollIntoView({ behavior: "smooth", block: "center" });
 
-
-  d.querySelector("input").focus();
-
-
+if (selectEmpresa) {
+  selectEmpresa.focus();
+}
 }
 
 function uT(i, c, v) {
@@ -1157,4 +1203,3 @@ activarNavegacionMovil();
 
 
 });
-

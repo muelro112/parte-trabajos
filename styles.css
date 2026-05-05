@@ -125,16 +125,17 @@
 }
 
   /* FILAS */
-  .fila {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 8px;
-    background: #ffffff;
-    padding: 6px;
-    border-radius: 6px;
-    border: 1px solid #eee;
-  }
+ .fila {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  background: #ffffff;
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid #eee;
+}
 
   .plantilla-box {
     background: #ffffff;
@@ -187,6 +188,27 @@
   
   .campo-fecha {
   max-width: 100%;
+}
+
+body {
+  text-align: center;
+}
+
+.fila {
+  justify-content: center;
+}
+
+input, textarea, select {
+  text-align: center;
+}
+
+button {
+  display: inline-block;
+}
+
+.campo-fecha input {
+  display: block;
+  margin: 5px auto;
 }
 
   

@@ -1,5 +1,6 @@
 [
   {
+    "empresa" : "AFERS",
     "nombre": "Rafael Jimenez",
     "dni": "AFERS",
     "categoria": "Oficial",
@@ -8,6 +9,7 @@
     "horas": "8"
   },
   {
+    "empresa" : "INFECCO",
     "nombre": "Abdelkala Nettah",
     "dni": "INFECCO",
     "categoria": "Oficial",
@@ -16,6 +18,7 @@
     "horas": "8"
   },
   {
+    "empresa" : "INFECCO",
     "nombre": "Ammed Nettah",
     "dni": "INFECCO",
     "categoria": "Oficial",
@@ -24,6 +27,7 @@
     "horas": "8"
   },
   {
+    "empresa" : "INFECCO",
     "nombre": "Carles Font",
     "dni": "INFECCO",
     "categoria": "Oficial",
@@ -32,6 +36,7 @@
     "horas": "8"
   },
   {
+    "empresa" : "INFECCO",
     "nombre": "Yasym Elfasi",
     "dni": "INFECCO",
     "categoria": "Oficial",
@@ -40,6 +45,7 @@
     "horas": "8"
   },
   {
+    "empresa" : "INFECCO",
     "nombre": "Yasym Ibraim",
    "dni": "INFECCO",
     "categoria": "Oficial",
@@ -48,6 +54,7 @@
     "horas": "8"
   },
   {
+    "empresa" : "INTERRIS",
     "nombre": "Daniel Cazalla",
     "dni": "INTERRIS",
     "categoria": "Oficial Mini",
@@ -56,6 +63,7 @@
     "horas": "8"
   },
   {
+    "empresa" : "INTERRIS",
     "nombre": "Jose Antonio Martinez",
     "dni": "INTERRIS",
     "categoria": "Oficial Mini",
@@ -64,6 +72,7 @@
     "horas": "8"
   },
   {
+    "empresa" : "ROVER",
     "nombre": "Pedro Lopez Lopez",
     "dni": "Rover",
     "categoria": "OMI",
@@ -72,6 +81,7 @@
     "horas": "8"
   },
   {
+    "empresa" : "ROVER",
     "nombre": "Jose Rafael Santolalla",
     "dni": "Rover",
     "categoria": "Capataz",
@@ -80,6 +90,7 @@
     "horas": "8"
   },
   {
+    "empresa" : "ROVER",
     "nombre": "Benjamin Perez",
     "dni": "Rover",
     "categoria": "Oficial",
@@ -88,6 +99,7 @@
     "horas": "8"
   },
   {
+    "empresa" : "ROVER",
     "nombre": "Teodoro Muñoz",
     "dni": "Rover",
     "categoria": "Oficial",
@@ -96,14 +108,7 @@
     "horas": "8"
   },
   {
-    "nombre": "Nico Villalcañas",
-    "dni": "Rover",
-    "categoria": "OMI",
-    "conductor": "Perfiladora",
-    "recurso": "No",
-    "horas": "8"
-  },
-  {
+    "empresa" : "ROVER",
     "nombre": "Nico Villalcañas",
     "dni": "Rover",
     "categoria": "Oficial",
@@ -112,6 +117,7 @@
     "horas": "8"
   },
   {
+    "empresa" : "SERCAT",
     "nombre": "Klever Acosta",
     "dni": "SERCAT",
     "categoria": "Oficial",
@@ -120,11 +126,174 @@
     "horas": "8"
   },
   {
+    "empresa" : "SERCAT",
     "nombre": "Navil Tachi",
     "dni": "SERCAT",
     "categoria": "Oficial",
     "conductor": "No",
     "recurso": "No",
+    "horas": "8"
+  },
+  {
+    "empresa" : "UTE",
+    "nombre": "Cesar Ospina",
+    "dni": "UTE",
+    "categoria": "Oficial",
+    "conductor": "No",
+    "recurso": "No",
+    "horas": "8"
+  },
+  {
+    "empresa" : "UTE",
+    "nombre": "Edgar Moyano Chicas",
+    "dni": "UTE",
+    "categoria": "Oficial",
+    "conductor": "No",
+    "recurso": "No",
+    "horas": "8"
+  },
+  {
+    "empresa" : "UTE",
+    "nombre": "Guillermo Soria",
+    "dni": "UTE",
+    "categoria": "Oficial",
+    "conductor": "Si",
+    "recurso": "No",
+    "horas": "8"
+  },
+  {
+    "empresa" : "UTE",
+    "nombre": "Isaac Martinez",
+    "dni": "UTE",
+    "categoria": "Oficial",
+    "conductor": "No",
+    "recurso": "No",
+    "horas": "8"
+  },
+  {
+    "empresa" : "UTE",
+    "nombre": "Javier Gallardo",
+    "dni": "UTE",
+    "categoria": "Oficial",
+    "conductor": "No",
+    "recurso": "No",
+    "horas": "8"
+  },
+  {
+    "empresa" : "UTE",
+    "nombre": "Joel Lopez ",
+    "dni": "UTE",
+    "categoria": "Piloto",
+    "conductor": "Si",
+    "recurso": "Si",
+    "horas": "8"
+  },
+  {
+    "empresa" : "UTE",
+    "nombre": "Jordi Bueno fuentes",
+    "dni": "UTE",
+    "categoria": "Oficial",
+    "conductor": "SI",
+    "recurso": "SI",
+    "horas": "8"
+  },
+  {
+    "empresa" : "UTE",
+    "nombre": "Jorge Seara",
+    "dni": "UTE",
+    "categoria": "Oficial",
+    "conductor": "No",
+    "recurso": "No",
+    "horas": "8"
+  },
+  {
+    "empresa" : "UTE",
+    "nombre": "Jose de la Cruz",
+    "dni": "UTE",
+    "categoria": "Oficial",
+    "conductor": "No",
+    "recurso": "Si",
+    "horas": "8"
+  },
+  {
+    "empresa" : "UTE",
+    "nombre": "Jose Mantilla",
+    "dni": "UTE",
+    "categoria": "Oficial",
+    "conductor": "No",
+    "recurso": "No",
+    "horas": "8"
+  },
+  {
+    "empresa" : "UTE",
+    "nombre": "Mark Moyano Chicas",
+    "dni": "UTE",
+    "categoria": "Oficial",
+    "conductor": "No",
+    "recurso": "No",
+    "horas": "8"
+  },
+  {
+    "empresa" : "UTE",
+    "nombre": "Michael Tapia",
+    "dni": "UTE",
+    "categoria": "Oficial",
+    "conductor": "No",
+    "recurso": "No",
+    "horas": "8"
+  },
+  {
+    "empresa" : "UTE",
+    "nombre": "Milton da Costa",
+    "dni": "UTE",
+    "categoria": "Oficial",
+    "conductor": "No",
+    "recurso": "No",
+    "horas": "8"
+  },
+  {
+    "empresa" : "UTE",
+    "nombre": "Sergio Martinez",
+    "dni": "UTE",
+    "categoria": "Oficial",
+    "conductor": "No",
+    "recurso": "No",
+    "horas": "8"
+  },
+  {
+    "empresa" : "UTE",
+    "nombre": "Sergio Moyano Risco",
+    "dni": "UTE",
+    "categoria": "Oficial",
+    "conductor": "Si",
+    "recurso": "Si",
+    "horas": "8"
+  },
+  {
+    "empresa" : "UTE",
+    "nombre": "Simon Ruiz",
+    "dni": "UTE",
+    "categoria": "Oficial",
+    "conductor": "No",
+    "recurso": "No",
+    "horas": "8"
+  },
+  {
+    "empresa" : "UTE",
+    "nombre": "Valentin Fabrega",
+    "dni": "UTE",
+    "categoria": "Oficial",
+    "conductor": "No",
+    "recurso": "No",
+    "horas": "8"
+  },
+  {
+    "empresa" : "UTE",
+    "nombre": "Vasile Balan",
+    "dni": "UTE",
+    "categoria": "Oficial",
+    "conductor": "Si",
+    "recurso": "Si",
     "horas": "8"
   }
 ]

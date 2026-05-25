@@ -1,299 +1,497 @@
 [
-  {
-    "empresa" : "AFERS",
-    "nombre": "Rafael Jimenez",
-    "dni": "AFERS",
-    "categoria": "Oficial",
-    "conductor": "Sí",
-    "recurso": "No",
-    "horas": "8"
-  },
-  {
-    "empresa" : "INFECCO",
-    "nombre": "Abdelkala Nettah",
-    "dni": "INFECCO",
-    "categoria": "Oficial",
-    "conductor": "No",
-    "recurso": "No",
-    "horas": "8"
-  },
-  {
-    "empresa" : "INFECCO",
-    "nombre": "Ammed Nettah",
-    "dni": "INFECCO",
-    "categoria": "Oficial",
-    "conductor": "No",
-    "recurso": "No",
-    "horas": "8"
-  },
-  {
-    "empresa" : "INFECCO",
-    "nombre": "Carles Font",
-    "dni": "INFECCO",
-    "categoria": "Oficial",
-    "conductor": "No",
-    "recurso": "No",
-    "horas": "8"
-  },
-  {
-    "empresa" : "INFECCO",
-    "nombre": "Yasym Elfasi",
-    "dni": "INFECCO",
-    "categoria": "Oficial",
-    "conductor": "No",
-    "recurso": "No",
-    "horas": "8"
-  },
-  {
-    "empresa" : "INFECCO",
-    "nombre": "Yasym Ibraim",
-   "dni": "INFECCO",
-    "categoria": "Oficial",
-    "conductor": "No",
-    "recurso": "No",
-    "horas": "8"
-  },
-  {
-    "empresa" : "INTERRIS",
-    "nombre": "Daniel Cazalla",
-    "dni": "INTERRIS",
-    "categoria": "Oficial Mini",
-    "conductor": "Giratoria",
-    "recurso": "No",
-    "horas": "8"
-  },
-  {
-    "empresa" : "INTERRIS",
-    "nombre": "Jose Antonio Martinez",
-    "dni": "INTERRIS",
-    "categoria": "Oficial Mini",
-    "conductor": "Giratoria",
-    "recurso": "No",
-    "horas": "8"
-  },
-  {
-    "empresa" : "ROVER",
-    "nombre": "Pedro Lopez Lopez",
-    "dni": "Rover",
-    "categoria": "OMI",
-    "conductor": "Bateadora",
-    "recurso": "No",
-    "horas": "8"
-  },
-  {
-    "empresa" : "ROVER",
-    "nombre": "Jose Rafael Santolalla",
-    "dni": "Rover",
-    "categoria": "Capataz",
-    "conductor": "Bateadora",
-    "recurso": "No",
-    "horas": "8"
-  },
-  {
-    "empresa" : "ROVER",
-    "nombre": "Benjamin Perez",
-    "dni": "Rover",
-    "categoria": "Oficial",
-    "conductor": "Bateadora",
-    "recurso": "No",
-    "horas": "8"
-  },
-  {
-    "empresa" : "ROVER",
-    "nombre": "Teodoro Muñoz",
-    "dni": "Rover",
-    "categoria": "Oficial",
-    "conductor": "Bateadora",
-    "recurso": "No",
-    "horas": "8"
-  },
-  {
-    "empresa" : "ROVER",
-    "nombre": "Nico Villalcañas",
-    "dni": "Rover",
-    "categoria": "Oficial",
-    "conductor": "No",
-    "recurso": "No",
-    "horas": "8"
-  },
-  {
-    "empresa" : "SERCAT",
-    "nombre": "Klever Acosta",
-    "dni": "SERCAT",
-    "categoria": "Oficial",
-    "conductor": "No",
-    "recurso": "No",
-    "horas": "8"
-  },
-  {
-    "empresa" : "SERCAT",
-    "nombre": "Navil Tachi",
-    "dni": "SERCAT",
-    "categoria": "Oficial",
-    "conductor": "No",
-    "recurso": "No",
-    "horas": "8"
-  },
-  {
-    "empresa" : "UTE",
-    "nombre": "Cesar Ospina",
-    "dni": "UTE",
-    "categoria": "Oficial",
-    "conductor": "No",
-    "recurso": "No",
-    "horas": "8"
-  },
-  {
-    "empresa" : "UTE",
-    "nombre": "Edgar Moyano Chicas",
-    "dni": "UTE",
-    "categoria": "Oficial",
-    "conductor": "No",
-    "recurso": "No",
-    "horas": "8"
-  },
-  {
-    "empresa" : "UTE",
-    "nombre": "Guillermo Soria",
-    "dni": "UTE",
-    "categoria": "Oficial",
-    "conductor": "Si",
-    "recurso": "No",
-    "horas": "8"
-  },
-  {
-    "empresa" : "UTE",
-    "nombre": "Isaac Martinez",
-    "dni": "UTE",
-    "categoria": "Oficial",
-    "conductor": "No",
-    "recurso": "No",
-    "horas": "8"
-  },
-  {
-    "empresa" : "UTE",
-    "nombre": "Javier Gallardo",
-    "dni": "UTE",
-    "categoria": "Oficial",
-    "conductor": "No",
-    "recurso": "No",
-    "horas": "8"
-  },
-  {
-    "empresa" : "UTE",
-    "nombre": "Joel Lopez ",
-    "dni": "UTE",
-    "categoria": "Piloto",
-    "conductor": "Si",
-    "recurso": "Si",
-    "horas": "8"
-  },
-  {
-    "empresa" : "UTE",
-    "nombre": "Jordi Bueno fuentes",
-    "dni": "UTE",
-    "categoria": "Oficial",
-    "conductor": "SI",
-    "recurso": "SI",
-    "horas": "8"
-  },
-  {
-    "empresa" : "UTE",
-    "nombre": "Jorge Seara",
-    "dni": "UTE",
-    "categoria": "Oficial",
-    "conductor": "No",
-    "recurso": "No",
-    "horas": "8"
-  },
-  {
-    "empresa" : "UTE",
-    "nombre": "Jose de la Cruz",
-    "dni": "UTE",
-    "categoria": "Oficial",
-    "conductor": "No",
-    "recurso": "Si",
-    "horas": "8"
-  },
-  {
-    "empresa" : "UTE",
-    "nombre": "Jose Mantilla",
-    "dni": "UTE",
-    "categoria": "Oficial",
-    "conductor": "No",
-    "recurso": "No",
-    "horas": "8"
-  },
-  {
-    "empresa" : "UTE",
-    "nombre": "Mark Moyano Chicas",
-    "dni": "UTE",
-    "categoria": "Oficial",
-    "conductor": "No",
-    "recurso": "No",
-    "horas": "8"
-  },
-  {
-    "empresa" : "UTE",
-    "nombre": "Michael Tapia",
-    "dni": "UTE",
-    "categoria": "Oficial",
-    "conductor": "No",
-    "recurso": "No",
-    "horas": "8"
-  },
-  {
-    "empresa" : "UTE",
-    "nombre": "Milton da Costa",
-    "dni": "UTE",
-    "categoria": "Oficial",
-    "conductor": "No",
-    "recurso": "No",
-    "horas": "8"
-  },
-  {
-    "empresa" : "UTE",
-    "nombre": "Sergio Martinez",
-    "dni": "UTE",
-    "categoria": "Oficial",
-    "conductor": "No",
-    "recurso": "No",
-    "horas": "8"
-  },
-  {
-    "empresa" : "UTE",
-    "nombre": "Sergio Moyano Risco",
-    "dni": "UTE",
-    "categoria": "Oficial",
-    "conductor": "Si",
-    "recurso": "Si",
-    "horas": "8"
-  },
-  {
-    "empresa" : "UTE",
-    "nombre": "Simon Ruiz",
-    "dni": "UTE",
-    "categoria": "Oficial",
-    "conductor": "No",
-    "recurso": "No",
-    "horas": "8"
-  },
-  {
-    "empresa" : "UTE",
-    "nombre": "Valentin Fabrega",
-    "dni": "UTE",
-    "categoria": "Oficial",
-    "conductor": "No",
-    "recurso": "No",
-    "horas": "8"
-  },
-  {
-    "empresa" : "UTE",
-    "nombre": "Vasile Balan",
-    "dni": "UTE",
-    "categoria": "Oficial",
-    "conductor": "Si",
-    "recurso": "Si",
-    "horas": "8"
-  }
+ {
+   "empresa": "AFERS",
+   "nombre": "Rafael Jimenez  ",
+   "dni": "Afers",
+   "categoria": "Oficial",
+   "conductor": "S�",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "INACCES",
+   "nombre": "Biemou Fofana",
+   "dni": "Inacces",
+   "categoria": "Oficial ",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "INACCES",
+   "nombre": "Falee Koulibaly",
+   "dni": "Inacces",
+   "categoria": "Oficial ",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "INACCES",
+   "nombre": "Ibraima Fatty",
+   "dni": "Inacces",
+   "categoria": "Oficial ",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "INACCES",
+   "nombre": "Mahama Traore",
+   "dni": "Inacces",
+   "categoria": "Oficial ",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "INACCES",
+   "nombre": "Mouriba Fofana",
+   "dni": "Inacces",
+   "categoria": "Oficial ",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "INACCES",
+   "nombre": "Moussa Diarra",
+   "dni": "Inacces",
+   "categoria": "Oficial ",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "INFECO",
+   "nombre": "Abdelkala Nettah  ",
+   "dni": "Infeco",
+   "categoria": "Oficial",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "INFECO",
+   "nombre": "Alejandro Sarrias",
+   "dni": "39738868C",
+   "categoria": "Omi",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "INFECO",
+   "nombre": "Ammed Nettah  ",
+   "dni": "Infeco",
+   "categoria": "Oficial",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "INFECO",
+   "nombre": "Carles Font  ",
+   "dni": "Infeco",
+   "categoria": "Oficial",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "INFECO",
+   "nombre": "Yasym Elfasi  ",
+   "dni": "Infeco",
+   "categoria": "Oficial",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "INFECO",
+   "nombre": "Yasym Ibraim  ",
+   "dni": "Infeco",
+   "categoria": "Oficial",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "INFECO",
+   "nombre": "Abdenbi El Gaout",
+   "dni": "Infeco",
+   "categoria": "Oficial",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "INFECO",
+   "nombre": "Nouredin Ghanou",
+   "dni": "Infeco",
+   "categoria": "Oficial",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "INFECO",
+   "nombre": "Essamouny Otman",
+   "dni": "Infeco",
+   "categoria": "Oficial",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "INFECO",
+   "nombre": "Omar Achhad",
+   "dni": "Infeco",
+   "categoria": "Oficial",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "INTERRIS",
+   "nombre": "Daniel Cazalla  ",
+   "dni": "Interris",
+   "categoria": "Oficial Mini",
+   "conductor": "Giratoria",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "INTERRIS",
+   "nombre": "Jose Antonio Martinez  ",
+   "dni": "Interris",
+   "categoria": "Oficial Mini",
+   "conductor": "Giratoria",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "INTERRIS",
+   "nombre": "Jose Martinez",
+   "dni": "39449771X",
+   "categoria": "Oficial Mini",
+   "conductor": "Giratoria",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "ROVER",
+   "nombre": "Benjamin Perez  Savedra",
+   "dni": "49115861M",
+   "categoria": "Oficial",
+   "conductor": "Bateadora",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "ROVER",
+   "nombre": "Jose Rafael Santolalla  ",
+   "dni": "12329582M",
+   "categoria": "Capataz",
+   "conductor": "Bateadora",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "ROVER",
+   "nombre": "Nico Villalca�as  ",
+   "dni": "Rover",
+   "categoria": "Oficial",
+   "conductor": "Perfiladora",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "ROVER",
+   "nombre": "Pedro Lopez Lopez  ",
+   "dni": "75111232V",
+   "categoria": "Omi",
+   "conductor": "Bateadora",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "ROVER",
+   "nombre": "Teodoro Mu�oz  Zurdo",
+   "dni": "1233476F",
+   "categoria": "Oficial",
+   "conductor": "Perfiladora",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "SERCAT",
+   "nombre": "Klever Acosta  ",
+   "dni": "Sercat",
+   "categoria": "Oficial",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "SERCAT",
+   "nombre": "Navil Tachi  ",
+   "dni": "Sercat",
+   "categoria": "Oficial",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "UTE",
+   "nombre": "Adan Mendez Molina",
+   "dni": "47750077F",
+   "categoria": "E..T",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "UTE",
+   "nombre": "Antonio Rayos Rocamora",
+   "dni": "22005980V",
+   "categoria": "Oficial 2�",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "UTE",
+   "nombre": "Bogdan Mihai Valan ",
+   "dni": "X5106212M",
+   "categoria": "Capataz",
+   "conductor": "Si",
+   "recurso": "Si",
+   "horas": 8
+ },
+ {
+   "empresa": "UTE",
+   "nombre": "Cesar Augusto Ospina Ospina",
+   "dni": "Y4967905B",
+   "categoria": "Peon Especialista",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "UTE",
+   "nombre": "Diego Morgade ",
+   "dni": "",
+   "categoria": "Capataz",
+   "conductor": "Si",
+   "recurso": "Si",
+   "horas": 8
+ },
+ {
+   "empresa": "UTE",
+   "nombre": "Edgar Moyano Chicas",
+   "dni": "47893758F",
+   "categoria": "Peon Especialista",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "UTE",
+   "nombre": "Gerard Garcia Valls",
+   "dni": "47774715N",
+   "categoria": "Oficial 2�",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "UTE",
+   "nombre": "Guillermo Soria Serrano",
+   "dni": "25372888R",
+   "categoria": "Peon Especialista",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "UTE",
+   "nombre": "Isaac Martinez Nicolas",
+   "dni": "44417931D",
+   "categoria": "Peon Especialista",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "UTE",
+   "nombre": "Javier Gallardo Fernandez",
+   "dni": "47615354H",
+   "categoria": "Oficial 2�",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "UTE",
+   "nombre": "Jesus  Lara Fernandez",
+   "dni": "39901696P",
+   "categoria": "Almacen",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "UTE",
+   "nombre": "Jes�s David Mantilla Rueda",
+   "dni": "60131124Q",
+   "categoria": "Peon Especialista",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "UTE",
+   "nombre": "Joel  Lara L�pez",
+   "dni": "49874792M",
+   "categoria": "P.H.S",
+   "conductor": "Si",
+   "recurso": "Si",
+   "horas": 8
+ },
+ {
+   "empresa": "UTE",
+   "nombre": "Jordi Bueno Fuentes",
+   "dni": "48012003D",
+   "categoria": "Peon Especialista",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "UTE",
+   "nombre": "Jorge Seara Melich",
+   "dni": "39725748Y",
+   "categoria": "Oficial 1�",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "UTE",
+   "nombre": "Jose Manuel De La Cruz Carrillo",
+   "dni": "48019202D",
+   "categoria": "P.O.P",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "UTE",
+   "nombre": "Jos� Mar�a Gracia Oriol",
+   "dni": "39871916J",
+   "categoria": "Inspector",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "UTE",
+   "nombre": "Josue Salaet Dur�n",
+   "dni": "48018403S",
+   "categoria": "Inspector",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "UTE",
+   "nombre": "Mark Moyano Chicas",
+   "dni": "47893757Y",
+   "categoria": "Peon Especialista",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "UTE",
+   "nombre": "Michael Alexander Tapia Illicachi",
+   "dni": "49876413Q",
+   "categoria": "Peon Especialista",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "UTE",
+   "nombre": "Milton Da Costa Gouveia",
+   "dni": "43238059G",
+   "categoria": "",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "UTE",
+   "nombre": "�scar Serrano Viudez",
+   "dni": "39910526Y",
+   "categoria": "Oficial 2�",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "UTE",
+   "nombre": "Rub�n Sevillano Fuentes",
+   "dni": "47773847H",
+   "categoria": "Peon Especialista",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "UTE",
+   "nombre": "Sergio Martinez Fernandez",
+   "dni": "39700242B",
+   "categoria": "Oficial 2�",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "UTE",
+   "nombre": "Sergio Moyano Risco",
+   "dni": "47600300Y",
+   "categoria": "Capataz",
+   "conductor": "Si",
+   "recurso": "Si",
+   "horas": 8
+ },
+ {
+   "empresa": "UTE",
+   "nombre": "Simon Ruiz Ruiz",
+   "dni": "47330866V",
+   "categoria": "Omi",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "UTE",
+   "nombre": "Valent�n Fabrega Mu�oz",
+   "dni": "75118929D",
+   "categoria": "Oficial 2�",
+   "conductor": "",
+   "recurso": "",
+   "horas": 8
+ },
+ {
+   "empresa": "UTE",
+   "nombre": "Vasile Balan ",
+   "dni": "X3930918B",
+   "categoria": "Capataz",
+   "conductor": "Si",
+   "recurso": "Si",
+   "horas": 8
+ }
 ]

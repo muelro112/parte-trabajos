@@ -80,6 +80,8 @@ let cortesTension = [];
 
 let OPERARIOS = [];
 
+let VEHICULOS = [];
+
 // ===== HELPERS DOM =====
 function el(id) {
   const elemento = document.getElementById(id);
@@ -190,6 +192,83 @@ function rellenarOperario(inputNombre, i) {
     horas: trabajadores[i]?.horas || ""
   };
 }
+
+
+//cargarVehiculos
+
+async function cargarVehiculos() {
+  try {
+    const response = await fetch("vehiculos.json");
+
+    if (!response.ok) throw new Error("No se pudo cargar vehiculos.json");
+
+    VEHICULOS = await response.json();
+  } catch (error) {
+    console.warn("Vehículos no cargados:", error);
+    VEHICULOS = [];
+  }
+}
+
+function cargarSelectEmpresasVehiculos(selectEmpresa) {
+  const empresas = [...new Set(
+    VEHICULOS.map(v => v.Empresa).filter(Boolean)
+  )];
+
+  selectEmpresa.innerHTML = `<option value="">Empresa</option>`;
+
+  empresas.forEach(empresa => {
+    selectEmpresa.innerHTML += `<option value="${empresa}">${empresa}</option>`;
+  });
+}
+
+function cargarVehiculosPorEmpresa(selectEmpresa) {
+  const fila = selectEmpresa.closest(".fila");
+  const selects = fila.querySelectorAll("select");
+  const selectVehiculo = selects[1];
+
+  const empresa = selectEmpresa.value;
+
+  const vehiculosFiltrados = VEHICULOS.filter(v => v.Empresa === empresa);
+
+  selectVehiculo.innerHTML = `<option value="">Vehículo</option>`;
+
+  vehiculosFiltrados.forEach(v => {
+    selectVehiculo.innerHTML += `<option value="${v.Vehiculo}">${v.Vehiculo}</option>`;
+  });
+
+  selectVehiculo.focus();
+}
+
+function rellenarVehiculoSelect(selectVehiculo, i) {
+  const nombre = selectVehiculo.value;
+  const vehiculo = VEHICULOS.find(v => v.Vehiculo === nombre);
+
+  if (!vehiculo) return;
+
+  const fila = selectVehiculo.closest(".fila");
+  const inputs = fila.querySelectorAll("input");
+
+  inputs[0].value = vehiculo.Vehiculo || "";
+  inputs[1].value = vehiculo.Tipo || "";
+  inputs[2].value = vehiculo.Matricula || "";
+  inputs[3].value = vehiculo.Horas || "";
+
+  maquinaria[i] = {
+    desc: vehiculo.Vehiculo || "",
+    tipo: vehiculo.Tipo || "",
+    mat: vehiculo.Matricula || "",
+    horas: vehiculo.Horas || ""
+  };
+}
+
+
+
+
+
+
+
+
+
 
 /*
 function activarNavegacionEnter() {
@@ -419,6 +498,16 @@ function addMaquina() {
   d.className = "fila";
 
   d.innerHTML = `
+
+  <select onchange="cargarVehiculosPorEmpresa(this)">
+  <option value="">Empresa</option>
+</select>
+
+<select onchange="rellenarVehiculoSelect(this, ${i})">
+  <option value="">Vehículo</option>
+</select>
+
+
   <input placeholder="Descripción" oninput="uM(${i},'desc',this.value)">
   <input placeholder="Tipo" oninput="uM(${i},'tipo',this.value)">
   <input placeholder="Matrícula" oninput="uM(${i},'mat',this.value)">
@@ -430,13 +519,22 @@ function addMaquina() {
   maquinaria.push({});
 
 
-  d.scrollIntoView({ behavior: "smooth", block: "center" });
+  // cargar opciones del desplegable
+
+  const selects = d.querySelectorAll("select");
+const selectEmpresa = selects[0];
+
+if (selectEmpresa) {
+  cargarSelectEmpresasVehiculos(selectEmpresa);
+}
 
 
   d.scrollIntoView({ behavior: "smooth", block: "center" });
+ 
   
-  
-  d.querySelector("input").focus();
+  if (selectEmpresa) {
+  selectEmpresa.focus();
+}
   
 
 }
@@ -518,6 +616,7 @@ function uCV(i, c, v) {
   cortesVia[i][c] = v;
 }
 
+
 // ===== CORTE TENSION =====
 function addCorteTension() {
   if (cortesTension.length >= 3) {
@@ -529,29 +628,42 @@ function addCorteTension() {
   const d = document.createElement("div");
   d.className = "fila";
 
+  // Copiar datos del último corte de vía, si existe
+  const corteViaBase = cortesVia.findLast
+    ? cortesVia.findLast(c => c && Object.keys(c).length > 0)
+    : [...cortesVia].reverse().find(c => c && Object.keys(c).length > 0);
+
+  const datosBase = corteViaBase || {};
+
   d.innerHTML = `
-  <input placeholder="Vía" oninput="uCT(${i},'via',this.value)">
-  <input placeholder="Estación" oninput="uCT(${i},'est',this.value)">
-  <input placeholder="Trayecto_Inicio" oninput="uCT(${i},'ini',this.value)">
-  <input placeholder="Trayecto_Fin" oninput="uCT(${i},'fin',this.value)">
-  <input placeholder="H.Previsto_Inicio" oninput="uCT(${i},'hi',this.value)">
-  <input placeholder="H.Previsto_Fin" oninput="uCT(${i},'hf',this.value)">
-  <input placeholder="Concesión" oninput="uCT(${i},'hc',this.value)">
-  <input placeholder="Devolución" oninput="uCT(${i},'hd',this.value)">
+  <input placeholder="Vía" value="${datosBase.via || ""}" oninput="uCT(${i},'via',this.value)">
+  <input placeholder="Estación" value="${datosBase.est || ""}" oninput="uCT(${i},'est',this.value)">
+  <input placeholder="Trayecto_Inicio" value="${datosBase.ini || ""}" oninput="uCT(${i},'ini',this.value)">
+  <input placeholder="Trayecto_Fin" value="${datosBase.fin || ""}" oninput="uCT(${i},'fin',this.value)">
+  <input placeholder="H.Previsto_Inicio" value="${datosBase.hi || ""}" oninput="uCT(${i},'hi',this.value)">
+  <input placeholder="H.Previsto_Fin" value="${datosBase.hf || ""}" oninput="uCT(${i},'hf',this.value)">
+  <input placeholder="Concesión" value="${datosBase.hc || ""}" oninput="uCT(${i},'hc',this.value)">
+  <input placeholder="Devolución" value="${datosBase.hd || ""}" oninput="uCT(${i},'hd',this.value)">
   <button type="button" class="btn-borrar" onclick="borrarFila(this,'cortesTension',${i})">🗑 Borrar</button>
 `;
 
   el("corte_tension").appendChild(d);
-  cortesTension.push({});
 
+  cortesTension.push({
+    via: datosBase.via || "",
+    est: datosBase.est || "",
+    ini: datosBase.ini || "",
+    fin: datosBase.fin || "",
+    hi: datosBase.hi || "",
+    hf: datosBase.hf || "",
+    hc: datosBase.hc || "",
+    hd: datosBase.hd || ""
+  });
 
   d.scrollIntoView({ behavior: "smooth", block: "center" });
-
-
   d.querySelector("input").focus();
-
-
 }
+
 
 function uCT(i, c, v) {
   cortesTension[i][c] = v;
@@ -1170,6 +1282,7 @@ function cargarDesdeJSON(d) {
 window.addEventListener("DOMContentLoaded", () => {
 
   cargarOperarios();
+  cargarVehiculos();
   
   const datosGuardados = localStorage.getItem("parteADIF");
 

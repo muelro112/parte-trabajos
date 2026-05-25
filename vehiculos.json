@@ -1,0 +1,79 @@
+[
+ {
+   "Empresa": "AFERS",
+   "Vehiculo": "Ford Transit",
+   "Tipo": "Furgoneta",
+   "Matricula": "0261MCR",
+   "Horas": 8
+ },
+ {
+   "Empresa": "INACCES",
+   "Vehiculo": "Ford Transit",
+   "Tipo": "Inacces",
+   "Matricula": "3481MPK",
+   "Horas": 8
+ },
+ {
+   "Empresa": "INACCES",
+   "Vehiculo": "Camioneta",
+   "Tipo": "Inacces",
+   "Matricula": "6839MKT",
+   "Horas": 8
+ },
+ {
+   "Empresa": "INFECO",
+   "Vehiculo": "Via Car Liebherr",
+   "Tipo": "Via Car",
+   "Matricula": "99719907015-9",
+   "Horas": 8
+ },
+ {
+   "Empresa": "INFECO",
+   "Vehiculo": "Dumper",
+   "Tipo": "Maq Obra",
+   "Matricula": "00000214105-9",
+   "Horas": null
+ },
+ {
+   "Empresa": "ROVER",
+   "Vehiculo": "Scoda Scala",
+   "Tipo": "Turismo",
+   "Matricula": "2923LXN",
+   "Horas": 8
+ },
+ {
+   "Empresa": "ROVER",
+   "Vehiculo": "Bateadora",
+   "Tipo": "Maq Pesada",
+   "Matricula": "99713093501-5",
+   "Horas": 8
+ },
+ {
+   "Empresa": "ROVER",
+   "Vehiculo": "Perfiladora",
+   "Tipo": "Maq Pesada",
+   "Matricula": "99713093401-8",
+   "Horas": 8
+ },
+ {
+   "Empresa": "ROVER",
+   "Vehiculo": "",
+   "Tipo": "",
+   "Matricula": "",
+   "Horas": null
+ },
+ {
+   "Empresa": "UTE",
+   "Vehiculo": "Peugeot Rifter",
+   "Tipo": "Furgoneta",
+   "Matricula": "6907NHZ",
+   "Horas": 8
+ },
+ {
+   "Empresa": "UTE",
+   "Vehiculo": "Ford Courrier",
+   "Tipo": "Furgoneta",
+   "Matricula": "8944NJV",
+   "Horas": 8
+ }
+]
